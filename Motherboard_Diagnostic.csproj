@@ -7,4 +7,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="GIGABYTE B660 DS3H.png" />
+    <None Remove="service.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="GIGABYTE B660 DS3H.png" />
+    <Resource Include="service.jpg" />
+  </ItemGroup>
+
 </Project>

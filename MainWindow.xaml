@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Motherboard_Diagnostic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1100">
-    <Grid>
-
+        Title="GIGABYTE B660 DS3H Diagnostic" Height="1000" Width="1400">
+    <Window.Background>
+        <ImageBrush ImageSource="/service.jpg"/>
+    </Window.Background>
+    <Grid Background="#4CFFFFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1050"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="850"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="2"
+        HorizontalAlignment="Center" />
+        <Grid Grid.Column="0" Height="850" Width="1050" Background="#7FFFFFFF" Margin="0,134,0,0" Grid.RowSpan="2">
+            <Canvas  Height="800" Width="1000">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/GIGABYTE B660 DS3H.png"/>
+                </Canvas.Background>
+            </Canvas>
+        </Grid>
+        <Label Grid.Row="0" Grid.Column="1" FontSize="18">
+            ЗДЕСЬ МОГЛА БЫТЬ ВАША РЕКЛАМА!!!!!!!!
+        </Label>
     </Grid>
 </Window>
