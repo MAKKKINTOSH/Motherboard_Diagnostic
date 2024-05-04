@@ -5,30 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Motherboard_Diagnostic"
         mc:Ignorable="d"
-        Title="GIGABYTE B660 DS3H Diagnostic" Height="1000" Width="1400">
+        Title="GIGABYTE B660 DS3H Diagnostic" Height="1000" Width="1400" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="/service.jpg"/>
     </Window.Background>
-    <Grid Background="#4CFFFFFF">
+    <Grid Background="#7FFFFFFF">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1050"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="850"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="2"
-        HorizontalAlignment="Center" />
-        <Grid Grid.Column="0" Height="850" Width="1050" Background="#7FFFFFFF" Margin="0,134,0,0" Grid.RowSpan="2">
-            <Canvas  Height="800" Width="1000">
-                <Canvas.Background>
-                    <ImageBrush ImageSource="/GIGABYTE B660 DS3H.png"/>
-                </Canvas.Background>
-            </Canvas>
+        <Border BorderBrush="Black" BorderThickness="2">
+            <Grid Grid.Column="0" Grid.Row="0" Background="#99FFFFFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="#CCFFFFFF" >
+                    Панель инструментов
+                </Label>
+                <StackPanel Height="60" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Panel.ZIndex="20" Background="#CCFFFFFF">
+                    <RadioButton GroupName="Instruments" Content="Омметр" IsChecked="True" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Content="Вольтметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Content="Амперметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Content="Осциллограф" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Content="Тестер PCIe" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="0" Grid.Row="1" Height="850" Width="1050" Background="#99FFFFFF">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Canvas  Height="800" Width="1000">
+                    <Button Content="Socket" Canvas.Left="568" Canvas.Top="342" Height="168" Width="245" />
+                    <Button Content="DIMM2" Canvas.Left="487" Canvas.Top="619" RenderTransformOrigin="-3.904,-0.518" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Height="22" />
+                    <Button Content="DIMM3" Canvas.Left="487" Canvas.Top="652" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" />
+                    <Button Content="DIMM4" Canvas.Left="487" Canvas.Top="680" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
+                    <Button Content="DIMM1" Canvas.Left="487" Canvas.Top="592" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
+                    <Button Content="Bios_battery" Canvas.Left="69" Canvas.Top="682" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="78" />
+                    <Button Content="8_Pin" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" />
+                    <Button Content="24_Pin" Canvas.Left="706" Canvas.Top="758" Height="34" Width="169" />
+                    <Button Content="USB2" Canvas.Left="557" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Height="89" Width="66"/>
+                    <Button Content="USB3" Canvas.Left="654" Canvas.Top="13" Height="60" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="DP" Canvas.Left="724" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button Content="HDMI" Canvas.Left="796" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="PCIe-x16" Canvas.Left="388" Canvas.Top="148" Height="309" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Button Content="South_Brige" Canvas.Left="224" Canvas.Top="550" Height="140" Width="181" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Button Content="P1" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="620" Canvas.Top="179"/>
+                    <Button Content="P2" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="668" Canvas.Top="179"/>
+                    <Button Content="P3" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="713" Canvas.Top="179"/>
+                    <Button Content="P4" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="754" Canvas.Top="179"/>
+                    <Button Content="P5" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="798" Canvas.Top="179"/>
+                    <Button Content="P6" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="353"/>
+                    <Button Content="P7" HorizontalAlignment="Left" Height="51" Grid.Row="1" VerticalAlignment="Top" Width="45" Canvas.Left="895" Canvas.Top="299"/>
+                    <Button Content="P8" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="839" Canvas.Top="179"/>
+                    <Button Content="P9" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="402"/>
+                    <Button Content="P10" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="452"/>
+                    <Button Content="P11" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="502"/>
+                    <Button Content="MP" HorizontalAlignment="Left" Height="28" Margin="803,728,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66"/>
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="/GIGABYTE B660 DS3H.png"/>
+                    </Canvas.Background>
+                </Canvas>
+            </Border>
         </Grid>
-        <Label Grid.Row="0" Grid.Column="1" FontSize="18">
-            ЗДЕСЬ МОГЛА БЫТЬ ВАША РЕКЛАМА!!!!!!!!
-        </Label>
+        <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
+            <Canvas>
+                <Button Content="Отремонтировать" Canvas.Left="95" Canvas.Top="44" Height="43" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" Background="#FFEFE683"/>
+                <Button Content="Все сначала" Canvas.Left="10" Canvas.Top="44" Height="43" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Black" Background="#FF93E0DE"/>
+                <Button Content="Запустить ПК" Canvas.Left="215" Canvas.Top="44" Height="43" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGreen" BorderBrush="Black" Click="LaunchPCButton"/>
+
+            </Canvas>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+            <StackPanel Orientation="Vertical" Name="MessagePanel">
+                
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
