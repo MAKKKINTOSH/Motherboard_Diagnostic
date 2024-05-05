@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GIGABYTE B660 DS3H Diagnostic" Height="1000" Width="1400" ResizeMode="NoResize">
     <Window.Background>
-        <ImageBrush ImageSource="/service.jpg"/>
+        <ImageBrush ImageSource="media\service.jpg"/>
     </Window.Background>
     <Grid Background="#7FFFFFFF">
         <Grid.ColumnDefinitions>
@@ -66,7 +66,7 @@
                     <Button Content="P11" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="502"/>
                     <Button Content="MP" HorizontalAlignment="Left" Height="28" Margin="803,728,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66"/>
                     <Canvas.Background>
-                        <ImageBrush ImageSource="/GIGABYTE B660 DS3H.png"/>
+                        <ImageBrush ImageSource="media/GIGABYTE B660 DS3H.png"/>
                     </Canvas.Background>
                 </Canvas>
             </Border>
@@ -76,13 +76,14 @@
                 <Button Content="Отремонтировать" Canvas.Left="95" Canvas.Top="44" Height="43" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" Background="#FFEFE683"/>
                 <Button Content="Все сначала" Canvas.Left="10" Canvas.Top="44" Height="43" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Black" Background="#FF93E0DE"/>
                 <Button Content="Запустить ПК" Canvas.Left="215" Canvas.Top="44" Height="43" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGreen" BorderBrush="Black" Click="LaunchPCButton"/>
-
             </Canvas>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-            <StackPanel Orientation="Vertical" Name="MessagePanel">
-                
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Name="MessagePanel">
+
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Window>

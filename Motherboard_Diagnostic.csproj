@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="GIGABYTE B660 DS3H.png" />
-    <Resource Include="service.jpg" />
+    <Resource Include="media\GIGABYTE B660 DS3H.png" />
+    <Resource Include="media\service.jpg" />
   </ItemGroup>
 
 </Project>

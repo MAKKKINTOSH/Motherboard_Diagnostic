@@ -23,11 +23,9 @@ namespace Motherboard_Diagnostic
     public partial class MainWindow : Window
     {
         Diagnosic diagnostic = new();
-        StackPanel messagePanel;
         public MainWindow()
         {
             InitializeComponent();
-            messagePanel = ObjectsManager.FindChild<StackPanel>(this, "MessagePanel");
             startDiagnosic();
         }
         public void startDiagnosic()
@@ -44,12 +42,16 @@ namespace Motherboard_Diagnostic
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
                     diagnostic.IsRunning = true;
+                    EventPanel.AddEvent("ПК запущен");
                     break;
+
+                
 
                 case "Выключить":
                     bt.Background = Brushes.LightGreen;
                     bt.Content = "Запустить ПК";
                     diagnostic.IsRunning = false;
+                    EventPanel.AddEvent("ПК выключен");
                     break;
             }
         }
