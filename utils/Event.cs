@@ -7,24 +7,16 @@ namespace Motherboard_Diagnostic
 {
     static class EventPanel
     {
-        private static StackPanel Panel = ObjectsManager.FindChild<StackPanel>(Application.Current.MainWindow, "MessagePanel");
+        private static readonly StackPanel Panel = ObjectsManager.FindChild<StackPanel>(Application.Current.MainWindow, "MessagePanel");
         public static void AddEvent(string text, string eventType = "normal")
         {
-            Color color;
-            switch (eventType)
+            var color = eventType switch
             {
-                case "warning":
-                    color = Colors.Red;
-                    break;
-                case "good":
-                    color = Colors.Green;
-                    break;
-                case "normal":
-                default:
-                    color = Colors.White;
-                    break;
-            }
-            Event message = new Event(text, color);
+                "warning" => Colors.IndianRed,
+                "good" => Colors.LightGreen,
+                _ => Colors.White,
+            };
+            Event message = new(text, color);
             Panel.Children.Add(message);
             if (Panel.Children.Count > Config.maxEvents)
             {
@@ -34,11 +26,13 @@ namespace Motherboard_Diagnostic
     }
     class Event : Label
     {
-        private static StackPanel EventPanel = ObjectsManager.FindChild<StackPanel>(Application.Current.MainWindow, "EventPanel");
-        private static Thickness BorderThicknes = new Thickness(0, 0, 1, 1);
+        private static Thickness BorderThicknes = new(0, 0, 1, 1);
         public Event(string Event, Color color)
         {
-            this.Content = Event;
+            TextBlock textBlock = new();
+            textBlock.Text = Event;
+            textBlock.TextWrapping = TextWrapping.Wrap;
+            this.Content = textBlock;
             this.FontSize = 14;
             this.BorderThickness = BorderThicknes;
             this.BorderBrush = Brushes.Black;

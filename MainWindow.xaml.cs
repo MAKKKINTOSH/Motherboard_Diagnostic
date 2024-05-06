@@ -19,7 +19,7 @@ namespace Motherboard_Diagnostic
         }
         public void startDiagnosic()
         {
-            Diagnostic.generateFaults(Config.faultsQuantity);
+            Diagnostic.GenerateFaults(Config.faultsQuantity);
         }
         private string getSelectedInstrument()
         {
@@ -65,7 +65,7 @@ namespace Motherboard_Diagnostic
         }
         private void diagnosticPower(object sender, RoutedEventArgs e)
         {
-            Motherboard.power.makeDiagnostic(getSelectedInstrument());
+            Motherboard.power.MakeDiagnostic(getSelectedInstrument());
         }private void repairButton(object sender, RoutedEventArgs e)
         {
             new RepairWindow().Show();

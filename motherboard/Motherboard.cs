@@ -8,6 +8,6 @@ namespace Motherboard_Diagnostic
 {
     class Motherboard
     {
-        public static Power power = new("ohmmeter", 1);
+        public static Power power = new(1);
     }
 }

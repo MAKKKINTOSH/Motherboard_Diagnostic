@@ -14,10 +14,10 @@ namespace Motherboard_Diagnostic
         public Diagnostic()
         {
         }
-        public static void generateFaults(int quantity)
+        public static void GenerateFaults(int quantity)
         {
             Faults = new HashSet<Fault>();
-            Random rnd = new Random();
+            Random rnd = new();
             while (Faults.Count != quantity)
             {
                 int fault_id = rnd.Next(1, 6);
@@ -31,7 +31,7 @@ namespace Motherboard_Diagnostic
                 }
             }
         }
-        public static bool hasFault(int faultId)
+        public static bool HasFault(int faultId)
         {
             foreach (var item in Faults)
             {
