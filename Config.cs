@@ -9,5 +9,6 @@ namespace Motherboard_Diagnostic
     class Config
     {
         public static int faultsQuantity = 2;
+        public static int maxEvents = 10;
     }
 }
