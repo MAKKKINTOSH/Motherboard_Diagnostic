@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Motherboard_Diagnostic
+namespace Motherboard_Diagnostic.motherboard
 {
-    class Motherboard
+    internal class Phase
     {
-        public static Power power = new("ohmmeter", 1);
+        
     }
 }

@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Motherboard_Diagnostic
 {
@@ -22,7 +10,6 @@ namespace Motherboard_Diagnostic
     /// </summary>
     public partial class MainWindow : Window
     {
-        Diagnosic diagnostic = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +17,19 @@ namespace Motherboard_Diagnostic
         }
         public void startDiagnosic()
         {
-            this.diagnostic.generateFaults(Config.faultsQuantity);
+            Diagnostic.generateFaults(Config.faultsQuantity);
+        }
+        private string getSelectedInstrument()
+        {
+            StackPanel instruments = InstrumentsPanel;
+            foreach (var instr in instruments.Children.OfType<RadioButton>())
+            {
+                if (instr.IsChecked ?? false)
+                {
+                    return instr.Name;
+                }
+            }
+            return "Инструмент не выбран";
         }
 
         private void LaunchPCButton(object sender, RoutedEventArgs e)
@@ -39,10 +38,17 @@ namespace Motherboard_Diagnostic
             switch (bt.Content)
             {
                 case "Запустить ПК":
+                    if (Diagnostic.Faults.Count != 0)
+                    {
+                        EventPanel.AddEvent("ПК не запускается, устраните неисправности", "warning");
+                    }
+                    else
+                    {
+                        EventPanel.AddEvent("ПК запущен", "good");
+                    }
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
-                    diagnostic.IsRunning = true;
-                    EventPanel.AddEvent("ПК запущен");
+                    Diagnostic.IsRunning = false;
                     break;
 
                 
@@ -50,10 +56,18 @@ namespace Motherboard_Diagnostic
                 case "Выключить":
                     bt.Background = Brushes.LightGreen;
                     bt.Content = "Запустить ПК";
-                    diagnostic.IsRunning = false;
+                    Diagnostic.IsRunning = true;
                     EventPanel.AddEvent("ПК выключен");
                     break;
             }
         }
+        private void diagnosticPower(object sender, RoutedEventArgs e)
+        {
+            Motherboard.power.makeDiagnostic(getSelectedInstrument());
+        }private void repairButton(object sender, RoutedEventArgs e)
+        {
+            new RepairWindow().Show();
+        }
+
     }
 }

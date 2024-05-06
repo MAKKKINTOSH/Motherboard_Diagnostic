@@ -15,8 +15,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="67*"></RowDefinition>
+            <RowDefinition Height="425*"></RowDefinition>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="2">
             <Grid Grid.Column="0" Grid.Row="0" Background="#99FFFFFF">
@@ -27,12 +27,12 @@
                 <Label Grid.Row="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="#CCFFFFFF" >
                     Панель инструментов
                 </Label>
-                <StackPanel Height="60" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Panel.ZIndex="20" Background="#CCFFFFFF">
-                    <RadioButton GroupName="Instruments" Content="Омметр" IsChecked="True" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Content="Вольтметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Content="Амперметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Content="Осциллограф" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Content="Тестер PCIe" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                <StackPanel x:Name="InstrumentsPanel" Height="60" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Panel.ZIndex="20" Background="#CCFFFFFF">
+                    <RadioButton GroupName="Instruments" Name="ohmmeter" Content="Омметр" IsChecked="True" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Name="voltmeter" Content="Вольтметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Name="ammeter" Content="Амперметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Name="oscilloscope" Content="Осциллограф" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    <RadioButton GroupName="Instruments" Name="videotester" Content="Тестер PCIe" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
                 </StackPanel>
             </Grid>
         </Border>
@@ -45,8 +45,8 @@
                     <Button Content="DIMM4" Canvas.Left="487" Canvas.Top="680" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
                     <Button Content="DIMM1" Canvas.Left="487" Canvas.Top="592" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
                     <Button Content="Bios_battery" Canvas.Left="69" Canvas.Top="682" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="78" />
-                    <Button Content="8_Pin" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" />
-                    <Button Content="24_Pin" Canvas.Left="706" Canvas.Top="758" Height="34" Width="169" />
+                    <Button Content="8_Pin" Click="diagnosticPower" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" />
+                    <Button Content="24_Pin" Click="diagnosticPower" Canvas.Left="706" Canvas.Top="758" Height="34" Width="169" />
                     <Button Content="USB2" Canvas.Left="557" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Height="89" Width="66"/>
                     <Button Content="USB3" Canvas.Left="654" Canvas.Top="13" Height="60" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Button Content="DP" Canvas.Left="724" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -73,7 +73,7 @@
         </Grid>
         <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
             <Canvas>
-                <Button Content="Отремонтировать" Canvas.Left="95" Canvas.Top="44" Height="43" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" Background="#FFEFE683"/>
+                <Button Content="Отремонтировать" Click="repairButton" Canvas.Left="95" Canvas.Top="44" Height="43" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" Background="#FFEFE683"/>
                 <Button Content="Все сначала" Canvas.Left="10" Canvas.Top="44" Height="43" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Black" Background="#FF93E0DE"/>
                 <Button Content="Запустить ПК" Canvas.Left="215" Canvas.Top="44" Height="43" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGreen" BorderBrush="Black" Click="LaunchPCButton"/>
             </Canvas>
