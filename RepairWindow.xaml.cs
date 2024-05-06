@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,33 +30,40 @@ namespace Motherboard_Diagnostic
             foreach (var item in DiagnosticHandbook.Solutions)
             {
                 Button button = new();
+                TextBlock textBlock = new();
+                textBlock.TextWrapping = TextWrapping.Wrap;
+                textBlock.Text = item.description;
+
                 button.Click += makeRepair;
-                button.Content = item.description;
+                button.Content = textBlock;
                 repairPanel.Children.Add(button);
             }
         }
         private void makeRepair(object sender, RoutedEventArgs e)
         {
-            int solumtionId = -1;
+            Solution solution = null;
             foreach (var item in DiagnosticHandbook.Solutions)
             {
-                if (((Button)e.Source).Content.ToString() == item.description)
+                Button button = (Button)e.Source;
+                if (((TextBlock)button.Content).Text == item.description)
                 {
-                    solumtionId = item.id;
+                    solution = item;
                     break;
                 }
             }
-            foreach (var item in DiagnosticHandbook.Faults)
+            foreach (var item in Diagnostic.Faults)
             {
-                if (item.id == solumtionId)
+                if (item.id == solution.id)
                 {
                     Diagnostic.Faults.Remove(item);
+                    DiagnosticHandbook.Solutions.Remove(solution);
                     EventPanel.AddEvent("Поздравляем, неисправность исправлена", "good");
                     this.Hide();
                     return;
                 }
             }
             EventPanel.AddEvent("Неправильно", "warning");
+            this.Hide();
             return;
         }
     }

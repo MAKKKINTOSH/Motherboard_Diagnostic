@@ -8,6 +8,6 @@ namespace Motherboard_Diagnostic
 {
     class Config
     {
-        public static int faultsQuantity = 1;
+        public static int faultsQuantity = 2;
     }
 }

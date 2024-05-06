@@ -8,7 +8,7 @@ namespace Motherboard_Diagnostic
     
     class Diagnostic
     {
-        public static List<Fault> Faults { get; set; } = null;
+        public static HashSet<Fault> Faults { get; set; } = null;
         public static bool IsRunning { get; set; } = false;
 
         public Diagnostic()
@@ -16,9 +16,9 @@ namespace Motherboard_Diagnostic
         }
         public static void generateFaults(int quantity)
         {
-            Faults = new List<Fault>();
+            Faults = new HashSet<Fault>();
             Random rnd = new Random();
-            for (int i = 0; i < quantity; i++)
+            while (Faults.Count != quantity)
             {
                 int fault_id = rnd.Next(1, 6);
                 for (int j = 0; j < DiagnosticHandbook.Faults.Count; j++)

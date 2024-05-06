@@ -26,7 +26,7 @@ namespace Motherboard_Diagnostic
             }
             Event message = new Event(text, color);
             Panel.Children.Add(message);
-            if (Panel.Children.Count > 10)
+            if (Panel.Children.Count > Config.maxEvents)
             {
                 Panel.Children.RemoveAt(0);
             }
