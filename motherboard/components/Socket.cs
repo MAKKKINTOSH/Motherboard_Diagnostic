@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Motherboard_Diagnostic.motherboard
 {
-    internal class Socket
+    internal class Socket : Component
     {
+
     }
 }
