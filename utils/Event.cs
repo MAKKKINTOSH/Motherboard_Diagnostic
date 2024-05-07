@@ -17,7 +17,7 @@ namespace Motherboard_Diagnostic
                 _ => Colors.White,
             };
             Event message = new(text, color);
-            Panel.Children.Add(message);
+            Panel.Children.Insert(0, message);
             if (Panel.Children.Count > Config.maxEvents)
             {
                 Panel.Children.RemoveAt(0);

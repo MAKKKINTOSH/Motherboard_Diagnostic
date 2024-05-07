@@ -11,6 +11,7 @@ namespace Motherboard_Diagnostic
         public static HashSet<Fault> Faults { get; set; } = null;
         public static List<Solution> Solutions { get; set; } = null;
         public static bool IsRunning { get; set; }
+        public static bool PCIsLaunch = false;
 
         public static void Init()
         {

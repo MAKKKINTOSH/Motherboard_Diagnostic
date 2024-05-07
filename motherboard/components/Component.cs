@@ -50,6 +50,14 @@ namespace Motherboard_Diagnostic
                     }
                 }
             }
+            else if(Diagnostic.PCIsLaunch)
+            {
+                EventPanel.AddEvent("Диагностика работающего компьютера невозможна", "warning");
+            }
+            else
+            {
+                EventPanel.AddEvent("Попробуй его хотя бы запустить блин!\nЯ так старался, а ты даже кнопку \"Запустить ПК\" не нажмешь:(");
+            }
         }
 
         protected bool IsBroken()

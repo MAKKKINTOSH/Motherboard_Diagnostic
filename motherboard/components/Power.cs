@@ -14,14 +14,14 @@ namespace Motherboard_Diagnostic
         {
             this.Responses = new Dictionary<string, List<Func<string>>>
             {
-                { "ohmmeter", new List<Func<string>> {OhmmeterMessage, OhmmeterMessage} }
+                { "ohmmeter", new List<Func<string>> {OhmmeterWorkingMessage, OhmmeterBrokenMessage} }
             };
             if (Diagnostic.HasFault(FaultId))
             {
                 SetBrokenLines();
             }
         }
-        private static void SetBrokenLines()
+        private void SetBrokenLines()
         {
             int countLines = rnd.Next(3);
             while (brokenLines.Sum() < countLines)
@@ -29,7 +29,15 @@ namespace Motherboard_Diagnostic
                 brokenLines[rnd.Next(0, 3)] = 1;
             }
         }
-        private static string OhmmeterMessage()
+        private string OhmmeterWorkingMessage()
+        {
+            string message = "Показатели омметра:\n";
+            message += $"+12В: {GetOhmmeterValue(Convert.ToBoolean(false))} Ом\n";
+            message += $"+5В: {GetOhmmeterValue(Convert.ToBoolean(false))} Ом\n";
+            message += $"+3,3В: {GetOhmmeterValue(Convert.ToBoolean(false))} Ом\n";
+            return message;
+        }
+        private string OhmmeterBrokenMessage()
         {
             string message = "Показатели омметра:\n";
             message += $"+12В: {GetOhmmeterValue(Convert.ToBoolean(brokenLines[0]))} Ом\n";

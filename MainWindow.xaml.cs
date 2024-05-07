@@ -30,6 +30,9 @@ namespace Motherboard_Diagnostic
                 repairWindow.Hide();
             }
             EventPanel.RemoveAllEvents();
+            Button bt = ObjectsManager.FindChild<Button>(this, "StartPCButton");
+            bt.Background = Brushes.LightGreen;
+            bt.Content = "Запустить ПК";
             StartDiagnosic();
         }
         private string getSelectedInstrument()
@@ -62,6 +65,7 @@ namespace Motherboard_Diagnostic
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
                     Diagnostic.IsRunning = false;
+                    Diagnostic.PCIsLaunch = true;
                     break;
 
                 
@@ -70,6 +74,7 @@ namespace Motherboard_Diagnostic
                     bt.Background = Brushes.LightGreen;
                     bt.Content = "Запустить ПК";
                     Diagnostic.IsRunning = true;
+                    Diagnostic.PCIsLaunch = false;
                     EventPanel.AddEvent("ПК выключен");
                     break;
             }
@@ -80,7 +85,17 @@ namespace Motherboard_Diagnostic
         }
         private void repairButton(object sender, RoutedEventArgs e)
         {
-            new RepairWindow().Show();
+            if (Diagnostic.IsRunning)
+            {
+                new RepairWindow().Show();
+            }
+            else if (Diagnostic.PCIsLaunch)
+            {
+                EventPanel.AddEvent("Ремонт включенного компьютера невозможен", "warning");
+            }
+            else{
+                EventPanel.AddEvent("Продиагностируйте неисправность");
+            }
         }
     }
 }

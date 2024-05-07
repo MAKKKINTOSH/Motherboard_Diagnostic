@@ -75,7 +75,7 @@
             <Canvas>
                 <Button Content="Отремонтировать" Click="repairButton" Canvas.Left="95" Canvas.Top="44" Height="43" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black" Background="#FFEFE683"/>
                 <Button Content="Все сначала" Click="RestartDiagnostic" Canvas.Left="10" Canvas.Top="44" Height="43" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Black" Background="#FF93E0DE"/>
-                <Button Content="Запустить ПК" Canvas.Left="215" Canvas.Top="44" Height="43" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGreen" BorderBrush="Black" Click="LaunchPCButton"/>
+                <Button Content="Запустить ПК" Name="StartPCButton" Canvas.Left="215" Canvas.Top="44" Height="43" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGreen" BorderBrush="Black" Click="LaunchPCButton"/>
             </Canvas>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
