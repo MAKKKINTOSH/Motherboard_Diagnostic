@@ -101,6 +101,7 @@ namespace Motherboard_Diagnostic
         private void InitializeInstrumentPanel()
         {
             Thickness margin = new(50, 0, 0, 0);
+            InstrumentsPanel.Children.Clear();
             foreach (var instr in DiagnosticHandbook.InstrumentsDictionary.Values)
             {
                 RadioButton btn = new();
