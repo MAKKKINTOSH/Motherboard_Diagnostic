@@ -21,7 +21,7 @@ namespace Motherboard_Diagnostic
                     getBrokenData: OhmmeterBrokenMessage
                 )
             };
-            if (Diagnostic.HasFault(FaultId))
+            if (Diagnostic.HasFault(this.DiagnosticData[0].Fault))
             {
                 SetBrokenLines();
             }

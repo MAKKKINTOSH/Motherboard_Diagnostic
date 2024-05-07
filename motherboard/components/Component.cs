@@ -11,7 +11,6 @@ namespace Motherboard_Diagnostic
     abstract class Component
     {
         public string Instrument { get; } = string.Empty;
-        protected int FaultId { get; } = 0;
         protected List<ElementDiagnosticData> DiagnosticData { get; set; } = null;
 
         protected bool IsInstrumentValid(Instruments instrument)
@@ -28,40 +27,29 @@ namespace Motherboard_Diagnostic
 
         public void MakeDiagnostic(Instruments instrument)
         {
-            if (Diagnostic.IsRunning)
-            {
-                if (!IsInstrumentValid(instrument))
-                {
-                    EventPanel.AddEvent("Ошибка, этим инструментом сюда нельзя", "warning");
-                    return;
-                }
-                Condition condition = IsBroken() ? Condition.Broken : Condition.Working;
-                foreach (var parameters in DiagnosticData)
-                {
-                    if (instrument == parameters.Instrument)
-                    {
-                        MakeEvent(instrument, condition);
-                        return;
-                    }
-                }
-            }
-            else if(Diagnostic.PCIsLaunch)
-            {
-                EventPanel.AddEvent("Диагностика работающего компьютера невозможна", "warning");
-            }
-            else
+            if (!Diagnostic.IsRunning && !Diagnostic.PCIsLaunch)
             {
                 EventPanel.AddEvent("Попробуй его хотя бы запустить блин!\nЯ так старался, а ты даже кнопку \"Запустить ПК\" не нажмешь:(");
+                return;
             }
+            if(Diagnostic.PCIsLaunch)
+            {
+                EventPanel.AddEvent("Диагностика работающего компьютера невозможна", EventType.Warning);
+                return;
+            }
+            if (!IsInstrumentValid(instrument))
+            {
+                EventPanel.AddEvent("Ошибка, этим инструментом сюда нельзя", EventType.Warning);
+                return;
+            }
+            Fault fault = DiagnosticData.Find((x) => x.Instrument == instrument).Fault;
+            Condition condition = IsFaultActive(fault) ? Condition.Broken : Condition.Working;
+            MakeEvent(instrument, condition);
         }
 
-        protected bool IsBroken()
+        protected bool IsFaultActive(Fault fault)
         {
-            if (Diagnostic.HasFault(FaultId))
-            {
-                return true;
-            }
-            return false;
+            return Diagnostic.HasFault(fault);
         }
         protected void MakeEvent(Instruments instrument, Condition condition)
         {

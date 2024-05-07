@@ -8,12 +8,13 @@ namespace Motherboard_Diagnostic
     static class EventPanel
     {
         private static readonly StackPanel Panel = ObjectsManager.FindChild<StackPanel>(Application.Current.MainWindow, "MessagePanel");
-        public static void AddEvent(string text, string eventType = "normal")
+        public static void AddEvent(string text, EventType eventType = EventType.Normal)
         {
             var color = eventType switch
             {
-                "warning" => Colors.IndianRed,
-                "good" => Colors.LightGreen,
+                EventType.Warning => Colors.IndianRed,
+                EventType.Good => Colors.LightGreen,
+                EventType.Victory => Colors.Gold,
                 _ => Colors.White,
             };
             Event message = new(text, color);
@@ -42,5 +43,12 @@ namespace Motherboard_Diagnostic
             this.BorderBrush = Brushes.Black;
             this.Background = new SolidColorBrush(color);
         }
+    }
+    enum EventType
+    {
+        Warning,
+        Good,
+        Victory, 
+        Normal
     }
 }

@@ -44,11 +44,11 @@ namespace Motherboard_Diagnostic
                 Solutions.Add(fault.Solution);
             }
         }
-        public static bool HasFault(int faultId)
+        public static bool HasFault(Fault fault)
         {
             foreach (var item in Faults)
             {
-                if (item.Id == faultId)
+                if (item.Id == fault.Id)
                 {
                     return true;
                 }

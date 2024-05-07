@@ -57,11 +57,11 @@ namespace Motherboard_Diagnostic
                 case "Запустить ПК":
                     if (Diagnostic.Faults.Count != 0)
                     {
-                        EventPanel.AddEvent("ПК не запускается, устраните неисправности", "warning");
+                        EventPanel.AddEvent("ПК не запускается, устраните неисправности", EventType.Warning);
                     }
                     else
                     {
-                        EventPanel.AddEvent("ПК запущен", "good");
+                        EventPanel.AddEvent("ПК запущен", EventType.Victory);
                     }
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
@@ -92,7 +92,7 @@ namespace Motherboard_Diagnostic
             }
             else if (Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddEvent("Ремонт включенного компьютера невозможен", "warning");
+                EventPanel.AddEvent("Ремонт включенного компьютера невозможен", EventType.Warning);
             }
             else{
                 EventPanel.AddEvent("Продиагностируйте неисправность");

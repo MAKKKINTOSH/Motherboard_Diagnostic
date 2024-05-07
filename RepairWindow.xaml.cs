@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace Motherboard_Diagnostic
 {
@@ -58,12 +47,12 @@ namespace Motherboard_Diagnostic
                 {
                     Diagnostic.Faults.Remove(item);
                     Diagnostic.Solutions.Remove(solution);
-                    EventPanel.AddEvent("Поздравляем, неисправность исправлена", "good");
+                    EventPanel.AddEvent("Поздравляем, неисправность исправлена", EventType.Good);
                     this.Hide();
                     return;
                 }
             }
-            EventPanel.AddEvent("Неправильно", "warning");
+            EventPanel.AddEvent("Неправильно", EventType.Warning);
             this.Hide();
             return;
         }
