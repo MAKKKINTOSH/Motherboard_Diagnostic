@@ -8,6 +8,11 @@ namespace Motherboard_Diagnostic
 {
     class Motherboard
     {
-        public static Power power = new(1);
+        public static Power Power;
+
+        public static void Init()
+        {
+            Power = new(1);
+        }
     }
 }

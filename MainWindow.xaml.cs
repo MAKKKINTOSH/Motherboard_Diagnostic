@@ -15,11 +15,22 @@ namespace Motherboard_Diagnostic
         public MainWindow()
         {
             InitializeComponent();
-            startDiagnosic();
+            StartDiagnosic();
         }
-        public void startDiagnosic()
+        private void StartDiagnosic()
         {
-            Diagnostic.GenerateFaults(Config.faultsQuantity);
+            Diagnostic.Init();
+            Motherboard.Init();
+        }
+        private void RestartDiagnostic(object sender, RoutedEventArgs e)
+        {
+            Window repairWindow = ObjectsManager.FindChild<Window>(this, "RepairWindow");
+            if (repairWindow != null)
+            {
+                repairWindow.Hide();
+            }
+            EventPanel.RemoveAllEvents();
+            StartDiagnosic();
         }
         private string getSelectedInstrument()
         {
@@ -65,8 +76,9 @@ namespace Motherboard_Diagnostic
         }
         private void diagnosticPower(object sender, RoutedEventArgs e)
         {
-            Motherboard.power.MakeDiagnostic(getSelectedInstrument());
-        }private void repairButton(object sender, RoutedEventArgs e)
+            Motherboard.Power.MakeDiagnostic(getSelectedInstrument());
+        }
+        private void repairButton(object sender, RoutedEventArgs e)
         {
             new RepairWindow().Show();
         }
