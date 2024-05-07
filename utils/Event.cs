@@ -23,6 +23,10 @@ namespace Motherboard_Diagnostic
                 Panel.Children.RemoveAt(0);
             }
         }
+        public static void RemoveAllEvents()
+        {
+            Panel.Children.Clear();
+        }
     }
     class Event : Label
     {

@@ -23,11 +23,12 @@ namespace Motherboard_Diagnostic
         public RepairWindow()
         {
             InitializeComponent();
+            this.Name = "RepairWindow";
             initRepairs();
         }
         public void initRepairs()
         {
-            foreach (var item in DiagnosticHandbook.Solutions)
+            foreach (var item in Diagnostic.Solutions)
             {
                 Button button = new();
                 TextBlock textBlock = new();
@@ -42,7 +43,7 @@ namespace Motherboard_Diagnostic
         private void makeRepair(object sender, RoutedEventArgs e)
         {
             Solution solution = null;
-            foreach (var item in DiagnosticHandbook.Solutions)
+            foreach (var item in Diagnostic.Solutions)
             {
                 Button button = (Button)e.Source;
                 if (((TextBlock)button.Content).Text == item.description)
@@ -56,7 +57,7 @@ namespace Motherboard_Diagnostic
                 if (item.id == solution.id)
                 {
                     Diagnostic.Faults.Remove(item);
-                    DiagnosticHandbook.Solutions.Remove(solution);
+                    Diagnostic.Solutions.Remove(solution);
                     EventPanel.AddEvent("Поздравляем, неисправность исправлена", "good");
                     this.Hide();
                     return;

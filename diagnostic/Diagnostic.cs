@@ -9,14 +9,18 @@ namespace Motherboard_Diagnostic
     class Diagnostic
     {
         public static HashSet<Fault> Faults { get; set; } = null;
-        public static bool IsRunning { get; set; } = false;
+        public static List<Solution> Solutions { get; set; } = null;
+        public static bool IsRunning { get; set; }
 
-        public Diagnostic()
+        public static void Init()
         {
+            GenerateFaults(Config.faultsQuantity);
+            GenerateSolutions();
+            IsRunning = false;
         }
-        public static void GenerateFaults(int quantity)
+        private static void GenerateFaults(int quantity)
         {
-            Faults = new HashSet<Fault>();
+            Faults = new();
             Random rnd = new();
             while (Faults.Count != quantity)
             {
@@ -29,6 +33,14 @@ namespace Motherboard_Diagnostic
                         Faults.Add(fault);
                     }
                 }
+            }
+        }
+        private static void GenerateSolutions()
+        {
+            Solutions = new();
+            foreach (var sol in DiagnosticHandbook.Solutions)
+            {
+                Solutions.Add(sol);
             }
         }
         public static bool HasFault(int faultId)
