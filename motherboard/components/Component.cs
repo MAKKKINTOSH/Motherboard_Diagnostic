@@ -12,18 +12,13 @@ namespace Motherboard_Diagnostic
     {
         public string Instrument { get; } = string.Empty;
         protected int FaultId { get; } = 0;
-        protected Dictionary<string, List<Func<string>>> Responses { get; set; } = null;
+        protected List<ElementDiagnosticData> DiagnosticData { get; set; } = null;
 
-        public Component(int faultId)
+        protected bool IsInstrumentValid(Instruments instrument)
         {
-            this.FaultId = faultId;
-        }
-
-        protected bool IsInstrumentValid(string instrumentName)
-        {
-            foreach (var item in Responses.Keys)
+            foreach (var item in DiagnosticData)
             {
-                if (instrumentName == item)
+                if (instrument == item.Instrument)
                 {
                     return true;
                 }
@@ -31,19 +26,19 @@ namespace Motherboard_Diagnostic
             return false;
         }
 
-        public void MakeDiagnostic(string instrument_name)
+        public void MakeDiagnostic(Instruments instrument)
         {
             if (Diagnostic.IsRunning)
             {
-                if (!IsInstrumentValid(instrument_name))
+                if (!IsInstrumentValid(instrument))
                 {
                     EventPanel.AddEvent("Ошибка, этим инструментом сюда нельзя", "warning");
                     return;
                 }
                 Condition condition = IsBroken() ? Condition.Broken : Condition.Working;
-                foreach (var instrument in Responses.Keys)
+                foreach (var parameters in DiagnosticData)
                 {
-                    if (instrument_name == instrument)
+                    if (instrument == parameters.Instrument)
                     {
                         MakeEvent(instrument, condition);
                         return;
@@ -68,15 +63,22 @@ namespace Motherboard_Diagnostic
             }
             return false;
         }
-        protected void MakeEvent(string instrument, Condition condition)
+        protected void MakeEvent(Instruments instrument, Condition condition)
         {
-            EventPanel.AddEvent(Responses[instrument][(int)condition]());
+            ElementDiagnosticData diagnosticData = DiagnosticData.Find((x) => x.Instrument == instrument);
+
+            string message = condition switch
+            {
+                Condition.Working => diagnosticData.GetWorkingData(),
+                Condition.Broken => diagnosticData.GetBrokenData()
+            };
+            EventPanel.AddEvent(message);
         }
     }
 
     enum Condition
     {
-        Working = 0,
-        Broken = 1
+        Working,
+        Broken
     }
 }

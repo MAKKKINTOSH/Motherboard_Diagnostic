@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Motherboard_Diagnostic
 {
-    class Motherboard
+    public enum Instruments
     {
-        public static Power Power;
-
-        public static void Init()
-        {
-            Power = new();
-        }
+        Ohmmeter,
+        Voltmeter,
+        Ammeter,
+        Oscilloscope,
+        Videotester
     }
 }

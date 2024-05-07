@@ -7,14 +7,19 @@ namespace Motherboard_Diagnostic
 {
     class Power : Component
     {
-        private static readonly Random rnd = new Random();
-        private static List<int> brokenLines = new() {0, 0, 0};
+        private static readonly Random Rnd = new();
+        private static List<int> BrokenLines = new() {0, 0, 0};
         
-        public Power(int faultId) : base(faultId)
+        public Power()
         {
-            this.Responses = new Dictionary<string, List<Func<string>>>
+            this.DiagnosticData = new()
             {
-                { "ohmmeter", new List<Func<string>> {OhmmeterWorkingMessage, OhmmeterBrokenMessage} }
+                new ElementDiagnosticData(
+                    instrument: Instruments.Ohmmeter,
+                    faultId: 1,
+                    getWorkingData: OhmmeterWorkingMessage,
+                    getBrokenData: OhmmeterBrokenMessage
+                )
             };
             if (Diagnostic.HasFault(FaultId))
             {
@@ -23,10 +28,10 @@ namespace Motherboard_Diagnostic
         }
         private void SetBrokenLines()
         {
-            int countLines = rnd.Next(3);
-            while (brokenLines.Sum() < countLines)
+            int countLines = Rnd.Next(3);
+            while (BrokenLines.Sum() < countLines)
             {
-                brokenLines[rnd.Next(0, 3)] = 1;
+                BrokenLines[Rnd.Next(0, 3)] = 1;
             }
         }
         private string OhmmeterWorkingMessage()
@@ -40,9 +45,9 @@ namespace Motherboard_Diagnostic
         private string OhmmeterBrokenMessage()
         {
             string message = "Показатели омметра:\n";
-            message += $"+12В: {GetOhmmeterValue(Convert.ToBoolean(brokenLines[0]))} Ом\n";
-            message += $"+5В: {GetOhmmeterValue(Convert.ToBoolean(brokenLines[1]))} Ом\n";
-            message += $"+3,3В: {GetOhmmeterValue(Convert.ToBoolean(brokenLines[2]))} Ом\n";
+            message += $"+12В: {GetOhmmeterValue(Convert.ToBoolean(BrokenLines[0]))} Ом\n";
+            message += $"+5В: {GetOhmmeterValue(Convert.ToBoolean(BrokenLines[1]))} Ом\n";
+            message += $"+3,3В: {GetOhmmeterValue(Convert.ToBoolean(BrokenLines[2]))} Ом\n";
             return message;
         }
 
@@ -56,7 +61,7 @@ namespace Motherboard_Diagnostic
         }
         private static float GetRandomValue(int min, int max)
         {
-            return (float)(rnd.NextDouble() * (max - min) + min);
+            return (float)(Rnd.NextDouble() * (max - min) + min);
         }
     }
 }

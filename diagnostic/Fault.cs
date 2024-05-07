@@ -14,14 +14,9 @@ namespace Motherboard_Diagnostic
         public string Name { get;  }
         public string Description { get; }
         public Solution Solution { get; }
-        private static int NextId = 0;
-        private static int GenerateId()
+        public Fault(int id, string name, string description, Solution solution)
         {
-            return NextId++;
-        }
-        public Fault(string name, string description, Solution solution)
-        {
-            this.Id = GenerateId();
+            this.Id = id;
             this.Name = name;
             this.Description = description;
             this.Solution = solution;

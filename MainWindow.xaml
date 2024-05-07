@@ -28,11 +28,7 @@
                     Панель инструментов
                 </Label>
                 <StackPanel x:Name="InstrumentsPanel" Height="60" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Panel.ZIndex="20" Background="#CCFFFFFF">
-                    <RadioButton GroupName="Instruments" Name="ohmmeter" Content="Омметр" IsChecked="True" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Name="voltmeter" Content="Вольтметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Name="ammeter" Content="Амперметр" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Name="oscilloscope" Content="Осциллограф" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
-                    <RadioButton GroupName="Instruments" Name="videotester" Content="Тестер PCIe" Margin="50 0 0 0" VerticalAlignment="Center"></RadioButton>
+                    
                 </StackPanel>
             </Grid>
         </Border>

@@ -20,6 +20,7 @@ namespace Motherboard_Diagnostic
         private void StartDiagnosic()
         {
             Diagnostic.Init();
+            InitializeInstrumentPanel();
             Motherboard.Init();
         }
         private void RestartDiagnostic(object sender, RoutedEventArgs e)
@@ -35,17 +36,17 @@ namespace Motherboard_Diagnostic
             bt.Content = "Запустить ПК";
             StartDiagnosic();
         }
-        private string getSelectedInstrument()
+        private Instruments getSelectedInstrument()
         {
             StackPanel instruments = InstrumentsPanel;
             foreach (var instr in instruments.Children.OfType<RadioButton>())
             {
                 if (instr.IsChecked ?? false)
                 {
-                    return instr.Name;
+                    return DiagnosticHandbook.InstrumentsDictionary.FirstOrDefault(x => x.Value == instr.Name).Key;
                 }
             }
-            return "Инструмент не выбран";
+            return Instruments.Ohmmeter;
         }
 
         private void LaunchPCButton(object sender, RoutedEventArgs e)
@@ -96,6 +97,21 @@ namespace Motherboard_Diagnostic
             else{
                 EventPanel.AddEvent("Продиагностируйте неисправность");
             }
+        }
+        private void InitializeInstrumentPanel()
+        {
+            Thickness margin = new(50, 0, 0, 0);
+            foreach (var instr in DiagnosticHandbook.InstrumentsDictionary.Values)
+            {
+                RadioButton btn = new();
+                btn.Name = instr;
+                btn.Content = DiagnosticHandbook.RusInstrumentsNames[instr];
+                btn.Margin = margin;
+                btn.VerticalAlignment = VerticalAlignment.Center;
+                btn.GroupName = "Instruments";
+                InstrumentsPanel.Children.Add(btn);
+            }
+            ((RadioButton)InstrumentsPanel.Children[0]).IsChecked = true;
         }
     }
 }
