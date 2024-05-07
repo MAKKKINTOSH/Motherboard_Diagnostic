@@ -20,7 +20,7 @@ namespace Motherboard_Diagnostic
             Panel.Children.Insert(0, message);
             if (Panel.Children.Count > Config.maxEvents)
             {
-                Panel.Children.RemoveAt(0);
+                Panel.Children.RemoveAt(Panel.Children.Count - 1);
             }
         }
         public static void RemoveAllEvents()
