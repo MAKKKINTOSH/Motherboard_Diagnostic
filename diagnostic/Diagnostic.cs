@@ -29,7 +29,7 @@ namespace Motherboard_Diagnostic
                 for (int j = 0; j < DiagnosticHandbook.Faults.Count; j++)
                 {
                     Fault fault = DiagnosticHandbook.Faults[j];
-                    if (fault.id == fault_id)
+                    if (fault.Id == fault_id)
                     {
                         Faults.Add(fault);
                     }
@@ -39,16 +39,16 @@ namespace Motherboard_Diagnostic
         private static void GenerateSolutions()
         {
             Solutions = new();
-            foreach (var sol in DiagnosticHandbook.Solutions)
+            foreach (var fault in DiagnosticHandbook.Faults)
             {
-                Solutions.Add(sol);
+                Solutions.Add(fault.Solution);
             }
         }
         public static bool HasFault(int faultId)
         {
             foreach (var item in Faults)
             {
-                if (item.id == faultId)
+                if (item.Id == faultId)
                 {
                     return true;
                 }

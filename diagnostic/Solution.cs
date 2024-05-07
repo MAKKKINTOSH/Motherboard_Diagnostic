@@ -9,13 +9,11 @@ namespace Motherboard_Diagnostic
     
     class Solution
     {
-        public int id { get;}
-        public string description { get;}
+        public string Description { get;}
 
-        public Solution(int id, string description)
+        public Solution(string description)
         {
-            this.id = id;
-            this.description = description;
+            this.Description = description;
         }
     }
 }

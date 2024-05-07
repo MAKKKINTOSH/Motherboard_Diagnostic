@@ -33,7 +33,7 @@ namespace Motherboard_Diagnostic
                 Button button = new();
                 TextBlock textBlock = new();
                 textBlock.TextWrapping = TextWrapping.Wrap;
-                textBlock.Text = item.description;
+                textBlock.Text = item.Description;
 
                 button.Click += makeRepair;
                 button.Content = textBlock;
@@ -46,7 +46,7 @@ namespace Motherboard_Diagnostic
             foreach (var item in Diagnostic.Solutions)
             {
                 Button button = (Button)e.Source;
-                if (((TextBlock)button.Content).Text == item.description)
+                if (((TextBlock)button.Content).Text == item.Description)
                 {
                     solution = item;
                     break;
@@ -54,7 +54,7 @@ namespace Motherboard_Diagnostic
             }
             foreach (var item in Diagnostic.Faults)
             {
-                if (item.id == solution.id)
+                if (item.Solution == solution)
                 {
                     Diagnostic.Faults.Remove(item);
                     Diagnostic.Solutions.Remove(solution);
