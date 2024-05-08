@@ -13,9 +13,9 @@ namespace Motherboard_Diagnostic
         {
             InitializeComponent();
             this.Name = "RepairWindow";
-            initRepairs();
+            InitRepairs();
         }
-        public void initRepairs()
+        public void InitRepairs()
         {
             foreach (var item in Diagnostic.Solutions)
             {
@@ -24,12 +24,12 @@ namespace Motherboard_Diagnostic
                 textBlock.TextWrapping = TextWrapping.Wrap;
                 textBlock.Text = item.Description;
 
-                button.Click += makeRepair;
+                button.Click += MakeRepair;
                 button.Content = textBlock;
                 repairPanel.Children.Add(button);
             }
         }
-        private void makeRepair(object sender, RoutedEventArgs e)
+        private void MakeRepair(object sender, RoutedEventArgs e)
         {
             Solution solution = null;
             foreach (var item in Diagnostic.Solutions)

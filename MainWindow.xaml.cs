@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -36,7 +34,7 @@ namespace Motherboard_Diagnostic
             bt.Content = "Запустить ПК";
             StartDiagnosic();
         }
-        private Instruments getSelectedInstrument()
+        private Instruments GetSelectedInstrument()
         {
             StackPanel instruments = InstrumentsPanel;
             foreach (var instr in instruments.Children.OfType<RadioButton>())
@@ -80,30 +78,31 @@ namespace Motherboard_Diagnostic
                     break;
             }
         }
-        private void diagnosticPower(object sender, RoutedEventArgs e)
+        private void DiagnosticPower(object sender, RoutedEventArgs e)
         {
-            Motherboard.Power.MakeDiagnostic(getSelectedInstrument());
+            Motherboard.Power.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void diagnosticSouthBridge(object sender, RoutedEventArgs e)
+        private void DiagnosticSouthBridge(object sender, RoutedEventArgs e)
         {
-            Motherboard.SouthBridge.MakeDiagnostic(getSelectedInstrument());
+            Motherboard.SouthBridge.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void diagnosticBIOS(object sender, RoutedEventArgs e)
+        private void DiagnosticBIOS(object sender, RoutedEventArgs e)
         {
-            Motherboard.BIOS.MakeDiagnostic(getSelectedInstrument());
-        private void diagnosticBiosbattery(object sender, RoutedEventArgs e)
+            Motherboard.BIOS.MakeDiagnostic(GetSelectedInstrument());
+        }
+        private void DiagnosticBiosbattery(object sender, RoutedEventArgs e)
         {
-            Motherboard.Biosbattery.MakeDiagnostic(getSelectedInstrument());
+            Motherboard.Biosbattery.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void diagnosticPCIEInterface(object sender, RoutedEventArgs e)
+        private void DiagnosticPCIEInterface(object sender, RoutedEventArgs e)
         {
-            Motherboard.PCInterface.MakeDiagnostic(getSelectedInstrument());
+            Motherboard.PCInterface.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void repairButton(object sender, RoutedEventArgs e)
+        private void RepairButton(object sender, RoutedEventArgs e)
         {
             if (Diagnostic.IsRunning)
             {
@@ -123,12 +122,14 @@ namespace Motherboard_Diagnostic
             InstrumentsPanel.Children.Clear();
             foreach (var instr in DiagnosticHandbook.InstrumentsDictionary.Values)
             {
-                RadioButton btn = new();
-                btn.Name = instr;
-                btn.Content = DiagnosticHandbook.RusInstrumentsNames[instr];
-                btn.Margin = margin;
-                btn.VerticalAlignment = VerticalAlignment.Center;
-                btn.GroupName = "Instruments";
+                RadioButton btn = new()
+                {
+                    Name = instr,
+                    Content = DiagnosticHandbook.RusInstrumentsNames[instr],
+                    Margin = margin,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    GroupName = "Instruments"
+                };
                 InstrumentsPanel.Children.Add(btn);
             }
             ((RadioButton)InstrumentsPanel.Children[0]).IsChecked = true;

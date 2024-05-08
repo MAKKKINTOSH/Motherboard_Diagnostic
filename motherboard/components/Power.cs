@@ -26,7 +26,7 @@ namespace Motherboard_Diagnostic
                 SetBrokenLines();
             }
         }
-        private void SetBrokenLines()
+        private static void SetBrokenLines()
         {
             int countLines = Rnd.Next(3);
             while (BrokenLines.Sum() < countLines)
