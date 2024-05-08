@@ -85,6 +85,14 @@ namespace Motherboard_Diagnostic
             Motherboard.Power.MakeDiagnostic(getSelectedInstrument());
         }
 
+        private void diagnosticSouthBridge(object sender, RoutedEventArgs e)
+        {
+            Motherboard.SouthBridge.MakeDiagnostic(getSelectedInstrument());
+        }
+
+        private void diagnosticBIOS(object sender, RoutedEventArgs e)
+        {
+            Motherboard.BIOS.MakeDiagnostic(getSelectedInstrument());
         private void diagnosticBiosbattery(object sender, RoutedEventArgs e)
         {
             Motherboard.Biosbattery.MakeDiagnostic(getSelectedInstrument());
