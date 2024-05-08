@@ -93,6 +93,14 @@ namespace Motherboard_Diagnostic
         private void diagnosticBIOS(object sender, RoutedEventArgs e)
         {
             Motherboard.BIOS.MakeDiagnostic(getSelectedInstrument());
+        private void diagnosticBiosbattery(object sender, RoutedEventArgs e)
+        {
+            Motherboard.Biosbattery.MakeDiagnostic(getSelectedInstrument());
+        }
+
+        private void diagnosticPCIEInterface(object sender, RoutedEventArgs e)
+        {
+            Motherboard.PCInterface.MakeDiagnostic(getSelectedInstrument());
         }
 
         private void repairButton(object sender, RoutedEventArgs e)
