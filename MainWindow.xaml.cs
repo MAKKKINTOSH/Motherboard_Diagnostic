@@ -55,11 +55,19 @@ namespace Motherboard_Diagnostic
                 case "Запустить ПК":
                     if (Diagnostic.Faults.Count != 0)
                     {
-                        EventPanel.AddEvent("ПК не запускается, устраните неисправности", EventType.Warning);
+                        EventPanel.AddMessageEvent("ПК не запускается, устраните неисправности", EventType.Warning);
+                        if (Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 5)))
+                        {
+                            EventPanel.AddMessageEvent("Изображения нет", EventType.Warning);
+                        }
+                        else
+                        {
+                            EventPanel.AddMessageEvent("Изображение есть", EventType.VeryGood);
+                        }
                     }
                     else
                     {
-                        EventPanel.AddEvent("ПК запущен", EventType.Victory);
+                        EventPanel.AddMessageEvent("ПК запущен, Изображение есть", EventType.VeryGood);
                     }
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
@@ -74,7 +82,7 @@ namespace Motherboard_Diagnostic
                     bt.Content = "Запустить ПК";
                     Diagnostic.IsRunning = true;
                     Diagnostic.PCIsLaunch = false;
-                    EventPanel.AddEvent("ПК выключен");
+                    EventPanel.AddMessageEvent("ПК выключен");
                     break;
             }
         }
@@ -83,9 +91,9 @@ namespace Motherboard_Diagnostic
             Motherboard.Power.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void DiagnosticSouthBridge(object sender, RoutedEventArgs e)
+        private void DiagnosticUSB(object sender, RoutedEventArgs e)
         {
-            Motherboard.SouthBridge.MakeDiagnostic(GetSelectedInstrument());
+            Motherboard.USB.MakeDiagnostic(GetSelectedInstrument());
         }
 
         private void DiagnosticBIOS(object sender, RoutedEventArgs e)
@@ -110,15 +118,15 @@ namespace Motherboard_Diagnostic
             }
             else if (Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddEvent("Ремонт включенного компьютера невозможен", EventType.Warning);
+                EventPanel.AddMessageEvent("Ремонт включенного компьютера невозможен", EventType.Warning);
             }
             else{
-                EventPanel.AddEvent("Продиагностируйте неисправность");
+                EventPanel.AddMessageEvent("Продиагностируйте неисправность");
             }
         }
         private void InitializeInstrumentPanel()
         {
-            Thickness margin = new(50, 0, 0, 0);
+            Thickness margin = new(25, 0, 25, 0);
             InstrumentsPanel.Children.Clear();
             foreach (var instr in DiagnosticHandbook.InstrumentsDictionary.Values)
             {

@@ -14,21 +14,22 @@ namespace Motherboard_Diagnostic.motherboard.components
             new ElementDiagnosticData(
                     instrument: Instruments.Oscilloscope,
                     faultId: 3,
-                    getWorkingData: OscilloscopeWorkingMessage,
-                    getBrokenData: OscilloscopeBrokenMessage
+                    dataType: DiagnosticDataType.Chart,
+                    getWorkingData: OscilloscopeWorkingChart,
+                    getBrokenData: OscilloscopeBrokenChart
                 )
             };
         }
 
-        private string OscilloscopeWorkingMessage()
+        private string OscilloscopeWorkingChart()
         {
-            string message = "Работает";
-            return message;
+            string filename = "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\biosgood.png";
+            return filename;
         }
-        private string OscilloscopeBrokenMessage()
+        private string OscilloscopeBrokenChart()
         {
-            string message = "Не работает";
-            return message;
+            string filename = "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\bad.png";
+            return filename;
         }
     }
 }

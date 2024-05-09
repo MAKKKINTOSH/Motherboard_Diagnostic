@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Motherboard_Diagnostic.motherboard
+namespace Motherboard_Diagnostic
 {
     internal class PCInterface : Component
     {
@@ -16,6 +16,7 @@ namespace Motherboard_Diagnostic.motherboard
                 new ElementDiagnosticData(
                     instrument: Instruments.Videotester,
                     faultId: 5,
+                    dataType: DiagnosticDataType.Text,
                     getWorkingData: VideotesterWorkingMessage,
                     getBrokenData: VideotesterBrokenMessage
                 )
@@ -23,12 +24,12 @@ namespace Motherboard_Diagnostic.motherboard
         }
         private string VideotesterWorkingMessage()
         {
-            string message = "Работает";
+            string message = "Обрывов нет";
             return message;
         }
         private string VideotesterBrokenMessage()
         {
-            string message = "Не работает";
+            string message = "Обрывы есть";
             return message;
         }
     }

@@ -35,33 +35,35 @@
         <Grid Grid.Column="0" Grid.Row="1" Height="850" Width="1050" Background="#99FFFFFF">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Canvas  Height="800" Width="1000">
-                    <Button Content="Socket" Canvas.Left="568" Canvas.Top="342" Height="168" Width="245" />
-                    <Button Content="DIMM2" Canvas.Left="487" Canvas.Top="619" RenderTransformOrigin="-3.904,-0.518" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Height="22" />
-                    <Button Content="DIMM3" Canvas.Left="487" Canvas.Top="652" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" />
-                    <Button Content="DIMM4" Canvas.Left="487" Canvas.Top="680" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
-                    <Button Content="DIMM1" Canvas.Left="487" Canvas.Top="592" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" />
-                    <Button Content="BIOS" Click="DiagnosticBIOS" Canvas.Left="100" Canvas.Top="541" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="38" />
-                    <Button Content="Bios_battery" Click="DiagnosticBiosbattery" Canvas.Left="69" Canvas.Top="682" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="78" />
-                    <Button Content="8_Pin" Click="DiagnosticPower" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" />
-                    <Button Content="24_Pin" Click="DiagnosticPower" Canvas.Left="706" Canvas.Top="758" Height="34" Width="169" />
-                    <Button Content="USB2" Canvas.Left="557" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Height="89" Width="66"/>
-                    <Button Content="USB3" Canvas.Left="654" Canvas.Top="13" Height="60" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Button Content="DP" Canvas.Left="724" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Button Content="HDMI" Canvas.Left="796" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Button Content="South_Brige" Click="DiagnosticSouthBridge" Canvas.Left="224" Canvas.Top="550" Height="140" Width="181" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Button Content="PCIe-x16" Click="DiagnosticPCIEInterface" Canvas.Left="388" Canvas.Top="148" Height="309" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Button Content="P1" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="620" Canvas.Top="179"/>
-                    <Button Content="P2" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="668" Canvas.Top="179"/>
-                    <Button Content="P3" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="713" Canvas.Top="179"/>
-                    <Button Content="P4" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="754" Canvas.Top="179"/>
-                    <Button Content="P5" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="798" Canvas.Top="179"/>
-                    <Button Content="P6" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="353"/>
-                    <Button Content="P7" HorizontalAlignment="Left" Height="51" Grid.Row="1" VerticalAlignment="Top" Width="45" Canvas.Left="895" Canvas.Top="299"/>
-                    <Button Content="P8" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="839" Canvas.Top="179"/>
-                    <Button Content="P9" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="402"/>
-                    <Button Content="P10" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="452"/>
-                    <Button Content="P11" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="502"/>
-                    <Button Content="MP" HorizontalAlignment="Left" Height="28" Margin="803,728,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66"/>
+                    <Button Content="Socket" Canvas.Left="568" Canvas.Top="342" Height="168" Width="245" Opacity="0" />
+                    <Button Content="DIMM2" Canvas.Left="487" Canvas.Top="619" RenderTransformOrigin="-3.904,-0.518" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Height="22" Opacity="0" />
+                    <Button Content="DIMM3" Canvas.Left="487" Canvas.Top="652" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Opacity="0" />
+                    <Button Content="DIMM4" Canvas.Left="487" Canvas.Top="680" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" Opacity="0" />
+                    <Button Content="DIMM1" Canvas.Left="487" Canvas.Top="592" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" Opacity="0" />
+                    <Button Content="BIOS" Click="DiagnosticBIOS" Canvas.Left="100" Canvas.Top="541" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="38" Opacity="0.3" />
+                    <Button Content="Bios_battery" Click="DiagnosticBiosbattery" Canvas.Left="69" Canvas.Top="682" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="78" Opacity="0.3" />
+                    <Button Content="8_Pin" Click="DiagnosticPower" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" Opacity="0.3" />
+                    <Button Content="24_Pin" Click="DiagnosticPower" Canvas.Left="706" Canvas.Top="758" Height="34" Width="169" Opacity="0.3" />
+                    <Button Content="USB2(1)" Click="DiagnosticUSB" Canvas.Left="557" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Height="89" Width="66" Opacity="0.3"/>
+                    <Button Content="USB3(1)" Click="DiagnosticUSB" Canvas.Left="654" Canvas.Top="13" Height="60" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.3"/>
+                    <Button Content="USB2(3)" Click="DiagnosticUSB" Canvas.Left="26" Canvas.Top="448" Height="46" Width="29" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.3"/>
+                    <Button Content="USB2(2)" Click="DiagnosticUSB" Canvas.Left="26" Canvas.Top="390" Height="55" Width="29" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Opacity="0.3"/>
+                    <Button Content="USB3(2)" Click="DiagnosticUSB" Canvas.Left="484" Canvas.Top="748" Height="24" Width="75" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Opacity="0.3"/>
+                    <Button Content="DP" Canvas.Left="724" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"/>
+                    <Button Content="HDMI" Canvas.Left="796" Canvas.Top="13" Height="47" Width="56" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0"/>
+                    <Button Content="South_Brige" Canvas.Left="224" Canvas.Top="550" Height="140" Width="181" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0" />
+                    <Button Content="PCIe-x16" Click="DiagnosticPCIEInterface" Canvas.Left="388" Canvas.Top="148" Height="309" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.3" />
+                    <Button Content="P1" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="620" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P2" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="668" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P3" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="713" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P4" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="754" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P5" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="798" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P6" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="353" Opacity="0"/>
+                    <Button Content="P7" HorizontalAlignment="Left" Height="51" Grid.Row="1" VerticalAlignment="Top" Width="45" Canvas.Left="895" Canvas.Top="299" Opacity="0"/>
+                    <Button Content="P8" HorizontalAlignment="Left" Height="36" Grid.Row="1" VerticalAlignment="Top" Width="36" Canvas.Left="839" Canvas.Top="179" Opacity="0"/>
+                    <Button Content="P9" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="402" Opacity="0"/>
+                    <Button Content="P10" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="452" Opacity="0"/>
+                    <Button Content="P11" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="502" Opacity="0"/>
                     <Canvas.Background>
                         <ImageBrush ImageSource="media/GIGABYTE B660 DS3H.png"/>
                     </Canvas.Background>

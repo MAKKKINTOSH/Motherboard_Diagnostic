@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Motherboard_Diagnostic
 {
     class Power : Component
     {
         private static readonly Random Rnd = new();
-        private static List<int> BrokenLines = new() {0, 0, 0};
+        private static readonly List<int> BrokenLines = new() {0, 0, 0};
         
         public Power()
         {
@@ -17,6 +16,7 @@ namespace Motherboard_Diagnostic
                 new ElementDiagnosticData(
                     instrument: Instruments.Ohmmeter,
                     faultId: 1,
+                    dataType: DiagnosticDataType.Text,
                     getWorkingData: OhmmeterWorkingMessage,
                     getBrokenData: OhmmeterBrokenMessage
                 )
@@ -28,7 +28,7 @@ namespace Motherboard_Diagnostic
         }
         private static void SetBrokenLines()
         {
-            int countLines = Rnd.Next(3);
+            int countLines = Rnd.Next(1, 4);
             while (BrokenLines.Sum() < countLines)
             {
                 BrokenLines[Rnd.Next(0, 3)] = 1;
