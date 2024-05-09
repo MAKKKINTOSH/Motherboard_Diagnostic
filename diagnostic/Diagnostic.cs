@@ -22,8 +22,7 @@ namespace Motherboard_Diagnostic
         private static void GenerateFaults(int quantity)
         {
             Faults = new();
-            Faults.Add(DiagnosticHandbook.Faults[1]);
-            /*Random rnd = new();
+            Random rnd = new();
             while (Faults.Count != quantity)
             {
                 int fault_id = rnd.Next(1, 6);
@@ -35,7 +34,7 @@ namespace Motherboard_Diagnostic
                         Faults.Add(fault);
                     }
                 }
-            }*/
+            }
         }
         private static void GenerateSolutions()
         {
