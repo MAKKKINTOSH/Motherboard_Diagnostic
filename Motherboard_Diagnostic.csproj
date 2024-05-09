@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="media\oscil\**" />
+    <EmbeddedResource Remove="media\oscil\**" />
+    <None Remove="media\oscil\**" />
+    <Page Remove="media\oscil\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="GIGABYTE B660 DS3H.png" />
     <None Remove="service.jpg" />
   </ItemGroup>
@@ -15,10 +22,6 @@
   <ItemGroup>
     <Resource Include="media\GIGABYTE B660 DS3H.png" />
     <Resource Include="media\service.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="media\oscil\" />
   </ItemGroup>
 
 </Project>
