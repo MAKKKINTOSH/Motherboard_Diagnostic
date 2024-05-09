@@ -9,7 +9,8 @@ namespace Motherboard_Diagnostic
     public enum Instruments
     {
         Ohmmeter,
-        Voltmeter,
+        VoltmeterBase,
+        VoltmeterVoltageDown,
         Ammeter,
         Oscilloscope,
         Videotester

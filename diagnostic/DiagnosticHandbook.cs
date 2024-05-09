@@ -51,18 +51,20 @@ namespace Motherboard_Diagnostic
         public static Dictionary<Instruments, string> InstrumentsDictionary = new()
         {
             {Instruments.Ohmmeter, "ohmmeter"},
-            {Instruments.Voltmeter, "voltmeter" },
+            {Instruments.VoltmeterBase, "voltmeterBase" },
+            {Instruments.VoltmeterVoltageDown, "voltmeterVoltageDown" },
             {Instruments.Ammeter, "ammeter" },
             {Instruments.Oscilloscope, "oscilloscope" },
             {Instruments.Videotester, "videotester"}
         };
         public static Dictionary<string, string> RusInstrumentsNames = new()
         {
-            {"ohmmeter", "Омметр"},
-            { "voltmeter", "Вольтметр" },
-            { "ammeter", "Амперметр" },
-            { "oscilloscope", "Осциллограф" },
-            { "videotester", "Тестер PCIe" }
+            {"ohmmeter", "Омметр" },
+            {"voltmeterBase", "Вольтметр (Вольтаж)" },
+            {"voltmeterVoltageDown", "Вольтметр (Падение напряжения)"},
+            {"ammeter", "Амперметр" },
+            {"oscilloscope", "Осциллограф" },
+            {"videotester", "Тестер PCIe" }
         };
     }
 }

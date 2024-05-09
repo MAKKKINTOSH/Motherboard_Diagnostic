@@ -11,7 +11,7 @@ namespace Motherboard_Diagnostic
     class Motherboard
     {
         public static Power Power;
-        public static SouthBridge SouthBridge;
+        public static USB USB;
         public static BIOS BIOS;
         public static Biosbattery Biosbattery;
         public static PCInterface PCInterface;
@@ -19,7 +19,7 @@ namespace Motherboard_Diagnostic
         public static void Init()
         {
             Power = new();
-            SouthBridge = new();
+            USB = new();
             BIOS = new();
             Biosbattery = new();
             PCInterface = new();

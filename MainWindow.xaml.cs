@@ -83,9 +83,9 @@ namespace Motherboard_Diagnostic
             Motherboard.Power.MakeDiagnostic(GetSelectedInstrument());
         }
 
-        private void DiagnosticSouthBridge(object sender, RoutedEventArgs e)
+        private void DiagnosticUSB(object sender, RoutedEventArgs e)
         {
-            Motherboard.SouthBridge.MakeDiagnostic(GetSelectedInstrument());
+            Motherboard.USB.MakeDiagnostic(GetSelectedInstrument());
         }
 
         private void DiagnosticBIOS(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ namespace Motherboard_Diagnostic
         }
         private void InitializeInstrumentPanel()
         {
-            Thickness margin = new(50, 0, 0, 0);
+            Thickness margin = new(25, 0, 25, 0);
             InstrumentsPanel.Children.Clear();
             foreach (var instr in DiagnosticHandbook.InstrumentsDictionary.Values)
             {
