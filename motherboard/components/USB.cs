@@ -5,7 +5,7 @@ namespace Motherboard_Diagnostic
     class USB : Component
     {
         protected static readonly Random Rnd = new();
-        private static bool IsBroken = false;
+        private static bool IsBroken;
         private static float VoltageDPlus, VoltageDMinus;
         public USB()
         {
@@ -21,6 +21,10 @@ namespace Motherboard_Diagnostic
             if(Diagnostic.HasFault(this.DiagnosticData[0].Fault))
             {
                 IsBroken = true;
+            }
+            else
+            {
+                IsBroken = false;
             }
             if (IsBroken)
             {
@@ -40,18 +44,16 @@ namespace Motherboard_Diagnostic
                 VoltageDMinus = Rnd.Next((int)(VoltageDPlus * 1000) - 10, (int)(VoltageDPlus * 1000) + 10) * (float)0.001;
             }
         }
-        private static void SetVoltage()
+        private static float GetVoltage(float voltage)
         {
-            VoltageDPlus = Rnd.Next((int)(VoltageDPlus * 1000) - 10, (int)(VoltageDPlus * 1000) + 10) * (float)0.001;
-            VoltageDMinus = Rnd.Next((int)(VoltageDMinus * 1000) - 10, (int)(VoltageDMinus * 1000) + 10) * (float)0.001;
+            return Rnd.Next((int)(voltage * 1000) - 10, (int)(voltage * 1000) + 10) * (float)0.001;
 
         }
         private static string VoltmeterMessage()
         {
-            SetVoltage();
             string message = "Падение напряжения:\n";
-            message += $"D+: {VoltageDPlus:N5} мВ\n";
-            message += $"D-: {VoltageDMinus:N5} мВ";
+            message += $"D+: {GetVoltage(VoltageDPlus):N5} мВ\n";
+            message += $"D-: {GetVoltage(VoltageDMinus):N5} мВ";
             return message;
         }
     }
