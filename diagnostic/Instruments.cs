@@ -11,7 +11,6 @@ namespace Motherboard_Diagnostic
         Ohmmeter,
         VoltmeterBase,
         VoltmeterVoltageDown,
-        Ammeter,
         Oscilloscope,
         Videotester
     }

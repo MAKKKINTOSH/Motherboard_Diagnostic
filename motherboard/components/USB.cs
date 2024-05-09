@@ -14,6 +14,7 @@ namespace Motherboard_Diagnostic
                 new ElementDiagnosticData(
                     instrument: Instruments.VoltmeterVoltageDown,
                     faultId: 2,
+                    dataType: DiagnosticDataType.Text,
                     getWorkingData: VoltmeterMessage,
                     getBrokenData: VoltmeterMessage
                 )

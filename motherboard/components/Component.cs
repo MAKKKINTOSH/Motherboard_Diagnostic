@@ -29,17 +29,17 @@ namespace Motherboard_Diagnostic
         {
             if (!Diagnostic.IsRunning && !Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddEvent("Попробуй его хотя бы запустить блин!\nЯ так старался, а ты даже кнопку \"Запустить ПК\" не нажмешь:(");
+                EventPanel.AddMessageEvent("Попробуй его хотя бы запустить блин!\nЯ так старался, а ты даже кнопку \"Запустить ПК\" не нажмешь:(");
                 return;
             }
             if(Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddEvent("Диагностика работающего компьютера невозможна", EventType.Warning);
+                EventPanel.AddMessageEvent("Диагностика работающего компьютера невозможна", EventType.Warning);
                 return;
             }
             if (!IsInstrumentValid(instrument))
             {
-                EventPanel.AddEvent("Ошибка, этим инструментом сюда нельзя", EventType.Warning);
+                EventPanel.AddMessageEvent("Ошибка, этим инструментом сюда нельзя", EventType.Warning);
                 return;
             }
             Fault fault = DiagnosticData.Find((x) => x.Instrument == instrument).Fault;
@@ -55,12 +55,22 @@ namespace Motherboard_Diagnostic
         {
             ElementDiagnosticData diagnosticData = DiagnosticData.Find((x) => x.Instrument == instrument);
 
-            string message = condition switch
+            string text = condition switch
             {
                 Condition.Working => diagnosticData.GetWorkingData(),
                 Condition.Broken => diagnosticData.GetBrokenData()
             };
-            EventPanel.AddEvent(message);
+            switch (diagnosticData.DataType)
+            {
+                case DiagnosticDataType.Text:
+                    EventPanel.AddMessageEvent(text);
+                    break;
+                case DiagnosticDataType.Chart:
+                    EventPanel.AddChartEvent(text);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

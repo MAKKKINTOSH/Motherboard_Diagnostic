@@ -16,6 +16,7 @@ namespace Motherboard_Diagnostic
                 new ElementDiagnosticData(
                     instrument: Instruments.Ohmmeter,
                     faultId: 1,
+                    dataType: DiagnosticDataType.Text,
                     getWorkingData: OhmmeterWorkingMessage,
                     getBrokenData: OhmmeterBrokenMessage
                 )
@@ -27,7 +28,7 @@ namespace Motherboard_Diagnostic
         }
         private static void SetBrokenLines()
         {
-            int countLines = Rnd.Next(3);
+            int countLines = Rnd.Next(1, 4);
             while (BrokenLines.Sum() < countLines)
             {
                 BrokenLines[Rnd.Next(0, 3)] = 1;

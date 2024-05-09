@@ -47,12 +47,12 @@ namespace Motherboard_Diagnostic
                 {
                     Diagnostic.Faults.Remove(item);
                     Diagnostic.Solutions.Remove(solution);
-                    EventPanel.AddEvent("Поздравляем, неисправность исправлена", EventType.Good);
+                    EventPanel.AddMessageEvent("Поздравляем, неисправность исправлена", EventType.Good);
                     this.Hide();
                     return;
                 }
             }
-            EventPanel.AddEvent("Неправильно", EventType.Warning);
+            EventPanel.AddMessageEvent("Неправильно", EventType.Warning);
             this.Hide();
             return;
         }

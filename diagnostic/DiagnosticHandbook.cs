@@ -53,7 +53,6 @@ namespace Motherboard_Diagnostic
             {Instruments.Ohmmeter, "ohmmeter"},
             {Instruments.VoltmeterBase, "voltmeterBase" },
             {Instruments.VoltmeterVoltageDown, "voltmeterVoltageDown" },
-            {Instruments.Ammeter, "ammeter" },
             {Instruments.Oscilloscope, "oscilloscope" },
             {Instruments.Videotester, "videotester"}
         };
@@ -62,7 +61,6 @@ namespace Motherboard_Diagnostic
             {"ohmmeter", "Омметр" },
             {"voltmeterBase", "Вольтметр (Вольтаж)" },
             {"voltmeterVoltageDown", "Вольтметр (Падение напряжения)"},
-            {"ammeter", "Амперметр" },
             {"oscilloscope", "Осциллограф" },
             {"videotester", "Тестер PCIe" }
         };

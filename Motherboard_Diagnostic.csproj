@@ -17,4 +17,8 @@
     <Resource Include="media\service.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="media\oscil\" />
+  </ItemGroup>
+
 </Project>
