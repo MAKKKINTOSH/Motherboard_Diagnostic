@@ -23,12 +23,12 @@ namespace Motherboard_Diagnostic.motherboard.components
 
         private string OscilloscopeWorkingChart()
         {
-            string filename = "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\biosgood.png";
+            string filename = "charts/biosgood.png";
             return filename;
         }
         private string OscilloscopeBrokenChart()
         {
-            string filename = "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\bad.png";
+            string filename = "charts/bad.png";
             return filename;
         }
     }

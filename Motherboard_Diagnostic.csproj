@@ -16,10 +16,20 @@
 
   <ItemGroup>
     <None Remove="GIGABYTE B660 DS3H.png" />
+    <None Remove="media\charts\bad.png" />
+    <None Remove="media\charts\biosgood.png" />
+    <None Remove="media\charts\rtcbad_1.png" />
+    <None Remove="media\charts\rtcbad_2.png" />
+    <None Remove="media\charts\rtcgood.png" />
     <None Remove="service.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="media\charts\bad.png" />
+    <Resource Include="media\charts\biosgood.png" />
+    <Resource Include="media\charts\rtcbad_1.png" />
+    <Resource Include="media\charts\rtcbad_2.png" />
+    <Resource Include="media\charts\rtcgood.png" />
     <Resource Include="media\GIGABYTE B660 DS3H.png" />
     <Resource Include="media\service.jpg" />
   </ItemGroup>
