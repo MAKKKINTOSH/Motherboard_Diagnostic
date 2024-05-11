@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Net.Http.Headers;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace Motherboard_Diagnostic
 {
@@ -68,10 +69,7 @@ namespace Motherboard_Diagnostic
     {
         public ChartEvent(string filename) : base()
         {
-            Image image = new Image();
-            image.Source = new BitmapImage(
-                new System.Uri(filename)
-            );
+            Image image = Media.GetPicture(filename);
             this.Content = image;
         }
     }

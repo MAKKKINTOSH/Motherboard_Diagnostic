@@ -25,7 +25,7 @@ namespace Motherboard_Diagnostic.motherboard.components
         }
         private string OscilloscopeWorkingChart()
         {
-            string filename = "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\rtcgood.png";
+            string filename = "charts/rtcgood.png";
             return filename;
         }
         private string OscilloscopeBrokenChart()
@@ -33,9 +33,10 @@ namespace Motherboard_Diagnostic.motherboard.components
             string filename;
             filename = Rnd.Next(3) switch
             {
-                0 => "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\rtcbad_1.png",
-                1 => "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\rtcbad_2.png",
-                2 => "C:\\Рабочий стол\\Motherboard_Diagnostic\\media\\charts\\bad.png"
+                0 => "charts/rtcbad_1.png",
+                1 => "charts/rtcbad_2.png",
+                2 => "charts/bad.png",
+                _ => throw new NotImplementedException()
             };
             return filename;
         }
