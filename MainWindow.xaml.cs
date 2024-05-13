@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -90,12 +91,12 @@ namespace Motherboard_Diagnostic
         }
         private void DiagnosticPower(object sender, RoutedEventArgs e)
         {
-            Motherboard.Power.MakeDiagnostic(GetSelectedInstrument());
+            Motherboard.Power.MakeDiagnostic(GetSelectedInstrument(), ((Button)sender).Content.ToString());
         }
 
         private void DiagnosticUSB(object sender, RoutedEventArgs e)
         {
-            Motherboard.USB.MakeDiagnostic(GetSelectedInstrument());
+            Motherboard.USB.MakeDiagnostic(GetSelectedInstrument(), ((Button)sender).Content.ToString());
         }
 
         private void DiagnosticBIOS(object sender, RoutedEventArgs e)

@@ -13,10 +13,11 @@ namespace Motherboard_Diagnostic
         {
             this.DiagnosticData = new()
             {
-                new ElementDiagnosticData(
+                new MultiElementDiagnosticData(
                     instrument: Instruments.Ohmmeter,
                     faultId: 1,
                     dataType: DiagnosticDataType.Text,
+                    buttons: new string[] {"8_Pin", "24_Pin"},
                     getWorkingData: OhmmeterWorkingMessage,
                     getBrokenData: OhmmeterBrokenMessage
                 )

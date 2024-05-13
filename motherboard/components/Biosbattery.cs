@@ -10,7 +10,8 @@ namespace Motherboard_Diagnostic.motherboard.components
 {
     internal class Biosbattery : Component
     {
-        Random Rnd = new();
+        private static Random Rnd = new();
+        public int BrokenPictureType = Rnd.Next(0, 3);
         public Biosbattery() {
             this.DiagnosticData = new()
             {
@@ -31,7 +32,7 @@ namespace Motherboard_Diagnostic.motherboard.components
         private string OscilloscopeBrokenChart()
         {
             string filename;
-            filename = Rnd.Next(3) switch
+            filename = BrokenPictureType switch
             {
                 0 => "charts/rtcbad_1.png",
                 1 => "charts/rtcbad_2.png",
