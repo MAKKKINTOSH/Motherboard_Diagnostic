@@ -59,7 +59,10 @@ namespace Motherboard_Diagnostic
                     if (Diagnostic.Faults.Count != 0)
                     {
                         EventPanel.AddMessageEvent("ПК не запускается, устраните неисправности", EventType.Warning);
-                        if (Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 5)))
+                        if (
+                            Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 5)) ||
+                            Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 8))
+                            )
                         {
                             EventPanel.AddMessageEvent("Изображения нет", EventType.Warning);
                         }

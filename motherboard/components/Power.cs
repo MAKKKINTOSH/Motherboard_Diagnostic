@@ -20,6 +20,14 @@ namespace Motherboard_Diagnostic
                     buttons: new string[] {"8_Pin", "24_Pin"},
                     getWorkingData: OhmmeterWorkingMessage,
                     getBrokenData: OhmmeterBrokenMessage
+                ),
+                new MultiElementDiagnosticData(
+                    instrument: Instruments.VoltmeterBase,
+                    faultId: 1,
+                    dataType: DiagnosticDataType.Text,
+                    buttons: new string[] { "8_Pin", "24_Pin" },
+                    getWorkingData: OhmmeterWorkingMessage,
+                    getBrokenData: OhmmeterBrokenMessage
                 )
             };
             if (Diagnostic.HasFault(this.DiagnosticData[0].Fault))
