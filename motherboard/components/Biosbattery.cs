@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO.Enumeration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace Motherboard_Diagnostic.motherboard.components
 {
     internal class Biosbattery : Component
     {
-        Random Rnd = new();
+        private static Random Rnd = new();
+        public int BrokenPictureType = Rnd.Next(0, 3);
+        private float Voltage;
         public Biosbattery() {
             this.DiagnosticData = new()
             {
@@ -20,8 +16,23 @@ namespace Motherboard_Diagnostic.motherboard.components
                     dataType: DiagnosticDataType.Chart,
                     getWorkingData: OscilloscopeWorkingChart,
                     getBrokenData: OscilloscopeBrokenChart
+                ),
+                new ElementDiagnosticData(
+                    instrument: Instruments.VoltmeterBase,
+                    faultId: 9,
+                    dataType: DiagnosticDataType.Text,
+                    getWorkingData: VoltmeterWorkingMessage,
+                    getBrokenData: VoltmeterBrokenMessage
                 )
             };
+            if (Diagnostic.HasFault(this.DiagnosticData[1].Fault))
+            {
+                this.Voltage = CalculationUtils.GetRandomFloat(0.8f, 1.7f);
+            }
+            else
+            {
+                this.Voltage = 3;
+            }
         }
         private string OscilloscopeWorkingChart()
         {
@@ -31,7 +42,7 @@ namespace Motherboard_Diagnostic.motherboard.components
         private string OscilloscopeBrokenChart()
         {
             string filename;
-            filename = Rnd.Next(3) switch
+            filename = BrokenPictureType switch
             {
                 0 => "charts/rtcbad_1.png",
                 1 => "charts/rtcbad_2.png",
@@ -39,6 +50,20 @@ namespace Motherboard_Diagnostic.motherboard.components
                 _ => throw new NotImplementedException()
             };
             return filename;
+        }
+        private string VoltmeterWorkingMessage()
+        {
+            return $"Напряжение: {this.GetVoltage()} В";
+        }
+        private string VoltmeterBrokenMessage()
+        {
+            int orient = Rnd.Next(0, 2) == 1 ? -1 : 1;
+            return $"Напряжение: {this.GetVoltage()} В";
+        }
+
+        private float GetVoltage()
+        {
+            return this.Voltage + CalculationUtils.GetRandomFloat(-0.05f, 0.05f);
         }
     }
 }

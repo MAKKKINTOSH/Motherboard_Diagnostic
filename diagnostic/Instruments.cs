@@ -12,6 +12,8 @@ namespace Motherboard_Diagnostic
         VoltmeterBase,
         VoltmeterVoltageDown,
         Oscilloscope,
-        Videotester
+        Videotester,
+        Calling,
+        RAMSlotTester
     }
 }

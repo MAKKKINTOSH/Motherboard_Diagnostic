@@ -25,7 +25,7 @@ namespace Motherboard_Diagnostic
             return false;
         }
 
-        public void MakeDiagnostic(Instruments instrument)
+        public void MakeDiagnostic(Instruments instrument, string ?buttonName = null)
         {
             if (!Diagnostic.IsRunning && !Diagnostic.PCIsLaunch)
             {
@@ -44,22 +44,36 @@ namespace Motherboard_Diagnostic
             }
             Fault fault = DiagnosticData.Find((x) => x.Instrument == instrument).Fault;
             Condition condition = IsFaultActive(fault) ? Condition.Broken : Condition.Working;
-            MakeEvent(instrument, condition);
+            MakeEvent(instrument, condition, buttonName);
         }
 
         protected bool IsFaultActive(Fault fault)
         {
             return Diagnostic.HasFault(fault);
         }
-        protected void MakeEvent(Instruments instrument, Condition condition)
+        protected void MakeEvent(Instruments instrument, Condition condition, string ?buttonName)
         {
             ElementDiagnosticData diagnosticData = DiagnosticData.Find((x) => x.Instrument == instrument);
+            string text = "";
 
-            string text = condition switch
+            if (condition == Condition.Working)
             {
-                Condition.Working => diagnosticData.GetWorkingData(),
-                Condition.Broken => diagnosticData.GetBrokenData()
-            };
+                text = diagnosticData.GetWorkingData();
+            }
+            else if (buttonName != null)
+            {
+                bool isBroken = ((MultiElementDiagnosticData)diagnosticData).MultiElements.Find(x => x.Item1 == buttonName).Item2;
+                text = isBroken switch
+                {
+                    true => diagnosticData.GetWorkingData(),
+                    false => diagnosticData.GetBrokenData()
+                };
+            }
+            else
+            {
+                text = diagnosticData.GetBrokenData();
+            }
+
             switch (diagnosticData.DataType)
             {
                 case DiagnosticDataType.Text:

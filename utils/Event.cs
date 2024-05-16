@@ -17,6 +17,7 @@ namespace Motherboard_Diagnostic
                 EventType.Warning => Colors.IndianRed,
                 EventType.Good => Colors.LightGreen,
                 EventType.VeryGood => Colors.Gold,
+                EventType.VeryBad => Colors.DarkRed,
                 _ => Colors.White,
             };
             new_event.SetColor(color);
@@ -76,6 +77,7 @@ namespace Motherboard_Diagnostic
     enum EventType
     {
         Warning,
+        VeryBad,
         Good,
         VeryGood, 
         Normal
