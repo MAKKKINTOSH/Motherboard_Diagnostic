@@ -9,7 +9,7 @@ namespace Motherboard_Diagnostic
         {
             new Fault(
             id: 0,
-            name: "Заводской брак",
+            name: "Заводской брак в текстолите, продиагностировать не получается",
             description: "Ремонт не поможет, тут только менять мать (логично будет предположить, что этот вариант самый нежелательный)",
             solution: new Solution(
                 description: "Покупка новой материнской платы"
@@ -102,15 +102,19 @@ namespace Motherboard_Diagnostic
             {Instruments.VoltmeterBase, "voltmeterBase" },
             {Instruments.VoltmeterVoltageDown, "voltmeterVoltageDown" },
             {Instruments.Oscilloscope, "oscilloscope" },
-            {Instruments.Videotester, "videotester"}
+            {Instruments.Videotester, "videotester"},
+            {Instruments.Calling, "calling" },
+            {Instruments.RAMSlotTester, "RAMTest" }
         };
         public static Dictionary<string, string> RusInstrumentsNames = new()
         {
             {"ohmmeter", "Омметр" },
-            {"voltmeterBase", "Вольтметр (Вольтаж)" },
-            {"voltmeterVoltageDown", "Вольтметр (Падение напряжения)"},
+            {"voltmeterBase", "Вольтметр" },
+            {"voltmeterVoltageDown", "Падение напряжения"},
             {"oscilloscope", "Осциллограф" },
-            {"videotester", "Тестер PCIe" }
+            {"videotester", "Тестер PCIe" },
+            {"calling", "Прозвонка"},
+            {"RAMTest", "Тестер RAM"}
         };
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Threading;
-using System.Windows.Controls.Primitives;
 
 namespace Motherboard_Diagnostic
 {

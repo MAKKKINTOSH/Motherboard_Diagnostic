@@ -1,7 +1,9 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -56,6 +58,7 @@ namespace Motherboard_Diagnostic
             switch (bt.Content)
             {
                 case "Запустить ПК":
+
                     if (Diagnostic.Faults.Count != 0)
                     {
                         EventPanel.AddMessageEvent("ПК не запускается, устраните неисправности", EventType.Warning);
@@ -102,6 +105,12 @@ namespace Motherboard_Diagnostic
             Motherboard.USB.MakeDiagnostic(GetSelectedInstrument(), ((Button)sender).Content.ToString());
         }
 
+        private void DiagnosticRAMSlot(object sender, RoutedEventArgs e)
+        {
+            Motherboard.RAMSlot.MakeDiagnostic(GetSelectedInstrument(), ((Button)sender).Content.ToString());
+        }
+
+
         private void DiagnosticBIOS(object sender, RoutedEventArgs e)
         {
             Motherboard.BIOS.MakeDiagnostic(GetSelectedInstrument());
@@ -114,6 +123,11 @@ namespace Motherboard_Diagnostic
         private void DiagnosticPCIEInterface(object sender, RoutedEventArgs e)
         {
             Motherboard.PCInterface.MakeDiagnostic(GetSelectedInstrument());
+        }
+
+        private void DiagnosticCapasitor(object sender, RoutedEventArgs e)
+        {
+            Motherboard.Capacitor.MakeDiagnostic(GetSelectedInstrument(), ((Button)sender).Content.ToString());
         }
 
         private void RepairButton(object sender, RoutedEventArgs e)
@@ -148,5 +162,6 @@ namespace Motherboard_Diagnostic
             }
             ((RadioButton)InstrumentsPanel.Children[0]).IsChecked = true;
         }
+
     }
 }

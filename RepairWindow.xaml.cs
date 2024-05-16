@@ -31,6 +31,12 @@ namespace Motherboard_Diagnostic
         }
         private void MakeRepair(object sender, RoutedEventArgs e)
         {
+            bool isRepair = false;
+            bool isBadlyBroken = false;
+            if (Diagnostic.HasFault(DiagnosticHandbook.Faults.Find(x => x.Id == 0)))
+            {
+                isBadlyBroken = true;
+            }
             Solution solution = null;
             foreach (var item in Diagnostic.Solutions)
             {
@@ -48,13 +54,24 @@ namespace Motherboard_Diagnostic
                     Diagnostic.Faults.Remove(item);
                     Diagnostic.Solutions.Remove(solution);
                     EventPanel.AddMessageEvent("Поздравляем, неисправность исправлена", EventType.Good);
-                    this.Hide();
-                    return;
+                    isRepair = true;
+                    break;
                 }
             }
-            EventPanel.AddMessageEvent("Неправильно", EventType.Warning);
+            if (!isBadlyBroken && solution.Description == DiagnosticHandbook.Faults.Find(x => x.Id == 0).Solution.Description)
+            {
+                EventPanel.AddMessageEvent("Плату можно было починить, а ты купил новую...", EventType.VeryBad);
+            }
+            else if (isBadlyBroken && isRepair)
+            {
+                Diagnostic.Faults.Clear();
+                EventPanel.AddMessageEvent("Действительно, единственным вариантом тут была только замена платы, ты хорошо справился!", EventType.VeryGood);
+            }
+            else if (!isRepair)
+            {
+                EventPanel.AddMessageEvent("Неправильно", EventType.Warning);
+            }
             this.Hide();
-            return;
         }
     }
 }

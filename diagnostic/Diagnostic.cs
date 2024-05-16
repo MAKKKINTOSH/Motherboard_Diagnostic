@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Motherboard_Diagnostic
 {
@@ -54,6 +55,10 @@ namespace Motherboard_Diagnostic
                 }
             }
             return false;
+        }
+        public static void AddFaultByID(int faultId)    // Только для удобства разработки, в проде не юзается
+        {
+            Faults.Add(DiagnosticHandbook.Faults.Find(x => x.Id == faultId));
         }
     }
 }

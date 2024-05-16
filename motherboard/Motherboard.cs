@@ -15,6 +15,8 @@ namespace Motherboard_Diagnostic
         public static BIOS BIOS;
         public static Biosbattery Biosbattery;
         public static PCInterface PCInterface;
+        public static Capacitor Capacitor;
+        public static RAMSlot RAMSlot;
 
         public static void Init()
         {
@@ -23,6 +25,8 @@ namespace Motherboard_Diagnostic
             BIOS = new();
             Biosbattery = new();
             PCInterface = new();
+            Capacitor = new();
+            RAMSlot = new();
         }
     }
 }

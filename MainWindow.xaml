@@ -36,10 +36,10 @@
             <Border BorderBrush="Black" BorderThickness="2">
                 <Canvas  Height="800" Width="1000">
                     <Button Content="Socket" Canvas.Left="568" Canvas.Top="342" Height="168" Width="245" Opacity="0" />
-                    <Button Content="DIMM2" Canvas.Left="487" Canvas.Top="619" RenderTransformOrigin="-3.904,-0.518" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Height="22" Opacity="0" />
-                    <Button Content="DIMM3" Canvas.Left="487" Canvas.Top="652" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Opacity="0" />
-                    <Button Content="DIMM4" Canvas.Left="487" Canvas.Top="680" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" Opacity="0" />
-                    <Button Content="DIMM1" Canvas.Left="487" Canvas.Top="592" HorizontalAlignment="Left" VerticalAlignment="Center" Width="419" Opacity="0" />
+                    <Button Content="RAMSlot1" Click="DiagnosticRAMSlot" Canvas.Left="487" Canvas.Top="592" RenderTransformOrigin="-3.904,-0.518" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Height="22" Opacity="0.3" />
+                    <Button Content="RAMSlot2" Click="DiagnosticRAMSlot"  Canvas.Left="487" Canvas.Top="620" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Opacity="0.3" />
+                    <Button Content="RAMSlot3" Click="DiagnosticRAMSlot" Canvas.Left="487" Canvas.Top="650" HorizontalAlignment="Center" VerticalAlignment="Top" Width="419" Opacity="0.3" />
+                    <Button Content="RAMSlot4" Click="DiagnosticRAMSlot" Canvas.Left="487" Canvas.Top="679" HorizontalAlignment="Center" VerticalAlignment="Top" Width="420" Opacity="0.3" />
                     <Button Content="BIOS" Click="DiagnosticBIOS" Canvas.Left="100" Canvas.Top="541" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="38" Opacity="0.3" />
                     <Button Content="Bios_battery" Click="DiagnosticBiosbattery" Canvas.Left="69" Canvas.Top="682" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="78" Opacity="0.3" />
                     <Button Content="8_Pin" Click="DiagnosticPower" Canvas.Left="950" Canvas.Top="148" Height="62" Width="40" Opacity="0.3" />
@@ -64,6 +64,18 @@
                     <Button Content="P9" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="402" Opacity="0"/>
                     <Button Content="P10" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="452" Opacity="0"/>
                     <Button Content="P11" HorizontalAlignment="Left" Height="47" Grid.Row="1" VerticalAlignment="Top" Width="43" Canvas.Left="895" Canvas.Top="502" Opacity="0"/>
+                    <Button Content="C1" Click="DiagnosticCapasitor" Canvas.Left="620" Canvas.Top="267" Height="25" Width="26" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.3"/>
+                    <Button Content="C2" Click="DiagnosticCapasitor" Canvas.Left="826" Canvas.Top="431" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button Content="C3" Click="DiagnosticCapasitor" Canvas.Left="826" Canvas.Top="401" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Button Content="C4" Click="DiagnosticCapasitor" Canvas.Left="826" Canvas.Top="370" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C5" Click="DiagnosticCapasitor" Canvas.Left="826" Canvas.Top="342" Height="23" Width="26" Opacity="0.3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Button Content="C6" Click="DiagnosticCapasitor" Canvas.Left="826" Canvas.Top="312" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button Content="C7" Click="DiagnosticCapasitor" Canvas.Left="780" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C8" Click="DiagnosticCapasitor" Canvas.Left="754" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C9" Click="DiagnosticCapasitor" Canvas.Left="726" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C10" Click="DiagnosticCapasitor" Canvas.Left="699" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C11" Click="DiagnosticCapasitor" Canvas.Left="673" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="C12" Click="DiagnosticCapasitor" Canvas.Left="646" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Canvas.Background>
                         <ImageBrush ImageSource="media/GIGABYTE B660 DS3H.png"/>
                     </Canvas.Background>
