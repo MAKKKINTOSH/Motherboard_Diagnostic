@@ -61,6 +61,8 @@ namespace Motherboard_Diagnostic
             if (!isBadlyBroken && solution.Description == DiagnosticHandbook.Faults.Find(x => x.Id == 0).Solution.Description)
             {
                 EventPanel.AddMessageEvent("Плату можно было починить, а ты купил новую...", EventType.VeryBad);
+                Diagnostic.Faults.Clear();
+                isRepair = true;
             }
             else if (isBadlyBroken && isRepair)
             {
