@@ -132,7 +132,7 @@ namespace Motherboard_Diagnostic
 
         private void RepairButton(object sender, RoutedEventArgs e)
         {
-            if (Diagnostic.IsRunning)
+            if (Diagnostic.IsRunning && Diagnostic.CanRepair)
             {
                 new RepairWindow().Show();
             }

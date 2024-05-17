@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 
 namespace Motherboard_Diagnostic
 {
@@ -42,6 +36,7 @@ namespace Motherboard_Diagnostic
                 EventPanel.AddMessageEvent("Ошибка, этим инструментом сюда нельзя", EventType.Warning);
                 return;
             }
+            Diagnostic.CanRepair = true;
             Fault fault = DiagnosticData.Find((x) => x.Instrument == instrument).Fault;
             Condition condition = IsFaultActive(fault) ? Condition.Broken : Condition.Working;
             MakeEvent(instrument, condition, buttonName);

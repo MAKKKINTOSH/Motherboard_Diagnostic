@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Motherboard_Diagnostic
 {
@@ -11,8 +9,10 @@ namespace Motherboard_Diagnostic
     {
         public static HashSet<Fault> Faults { get; set; } = null;
         public static List<Solution> Solutions { get; set; } = null;
+        public static int[] FaultsIdsArray = DiagnosticHandbook.Faults.Select(x => x.Id).ToArray();
         public static bool IsRunning { get; set; }
         public static bool PCIsLaunch = false;
+        public static bool CanRepair = false;
 
         public static void Init()
         {
@@ -26,15 +26,8 @@ namespace Motherboard_Diagnostic
             Random rnd = new();
             while (Faults.Count != quantity)
             {
-                int fault_id = rnd.Next(1, 6);
-                for (int j = 0; j < DiagnosticHandbook.Faults.Count; j++)
-                {
-                    Fault fault = DiagnosticHandbook.Faults[j];
-                    if (fault.Id == fault_id)
-                    {
-                        Faults.Add(fault);
-                    }
-                }
+                int faultArrayIndex = rnd.Next(0, FaultsIdsArray.Length);
+                Faults.Add(DiagnosticHandbook.Faults.Find(x => x.Id == FaultsIdsArray[faultArrayIndex]));
             }
         }
         private static void GenerateSolutions()
