@@ -76,6 +76,7 @@
                     <Button Content="C10" Click="DiagnosticCapasitor" Canvas.Left="699" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Button Content="C11" Click="DiagnosticCapasitor" Canvas.Left="673" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Button Content="C12" Click="DiagnosticCapasitor" Canvas.Left="646" Canvas.Top="267" Height="25" Width="26" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button Content="RTC" Click="DiagnosticRTC" Canvas.Left="188" Canvas.Top="536" Height="20" Width="62" Opacity="0.3" HorizontalAlignment="Left" VerticalAlignment="Center" />
                     <Canvas.Background>
                         <ImageBrush ImageSource="media/GIGABYTE B660 DS3H.png"/>
                     </Canvas.Background>

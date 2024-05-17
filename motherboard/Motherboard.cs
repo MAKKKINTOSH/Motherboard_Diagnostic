@@ -17,6 +17,7 @@ namespace Motherboard_Diagnostic
         public static PCInterface PCInterface;
         public static Capacitor Capacitor;
         public static RAMSlot RAMSlot;
+        public static RTC RTC;
 
         public static void Init()
         {
@@ -27,6 +28,7 @@ namespace Motherboard_Diagnostic
             PCInterface = new();
             Capacitor = new();
             RAMSlot = new();
+            RTC = new RTC();
         }
     }
 }

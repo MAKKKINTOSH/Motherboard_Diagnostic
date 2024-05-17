@@ -119,6 +119,10 @@ namespace Motherboard_Diagnostic
         {
             Motherboard.Biosbattery.MakeDiagnostic(GetSelectedInstrument());
         }
+        private void DiagnosticRTC(object sender, RoutedEventArgs e)
+        {
+            Motherboard.RTC.MakeDiagnostic(GetSelectedInstrument());
+        }
 
         private void DiagnosticPCIEInterface(object sender, RoutedEventArgs e)
         {

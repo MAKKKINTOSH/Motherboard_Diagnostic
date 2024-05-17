@@ -73,7 +73,7 @@ namespace Motherboard_Diagnostic
         {
             return isBroken switch
             {
-                false => CalculationUtils.GetRandomFloat(Config.minGoodOms, Config.maxGoodOms),
+                false => CalculationUtils.GetRandomFloat(2000, 5000),
                 true => CalculationUtils.GetRandomFloat(1, 2)
             };
         }

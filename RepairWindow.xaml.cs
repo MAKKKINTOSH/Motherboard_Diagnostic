@@ -64,7 +64,7 @@ namespace Motherboard_Diagnostic
                 Diagnostic.Faults.Clear();
                 isRepair = true;
             }
-            else if (isBadlyBroken && isRepair)
+            else if (isBadlyBroken && isRepair && solution.Description == DiagnosticHandbook.Faults.Find(x => x.Id == 0).Solution.Description)
             {
                 Diagnostic.Faults.Clear();
                 EventPanel.AddMessageEvent("Действительно, единственным вариантом тут была только замена платы, ты хорошо справился!", EventType.VeryGood);
