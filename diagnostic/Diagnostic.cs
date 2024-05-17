@@ -19,6 +19,8 @@ namespace Motherboard_Diagnostic
             GenerateFaults(Config.faultsQuantity);
             GenerateSolutions();
             IsRunning = false;
+            CanRepair = false;
+            PCIsLaunch = false;
         }
         private static void GenerateFaults(int quantity)
         {
