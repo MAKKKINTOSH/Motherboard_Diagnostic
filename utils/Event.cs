@@ -14,7 +14,7 @@ namespace Motherboard_Diagnostic
         {
             var color = eventType switch
             {
-                EventType.Warning => Colors.IndianRed,
+                EventType.Bad => Colors.IndianRed,
                 EventType.Good => Colors.LightGreen,
                 EventType.VeryGood => Colors.Gold,
                 EventType.VeryBad => Colors.DarkRed,
@@ -76,7 +76,7 @@ namespace Motherboard_Diagnostic
     }
     enum EventType
     {
-        Warning,
+        Bad,
         VeryBad,
         Good,
         VeryGood, 

@@ -28,7 +28,7 @@ namespace Motherboard_Diagnostic
             PCInterface = new();
             Capacitor = new();
             RAMSlot = new();
-            RTC = new RTC();
+            RTC = new();
         }
     }
 }

@@ -28,12 +28,12 @@ namespace Motherboard_Diagnostic
             }
             if(Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddMessageEvent("Диагностика работающего компьютера невозможна", EventType.Warning);
+                EventPanel.AddMessageEvent("Диагностика работающего компьютера невозможна", EventType.Bad);
                 return;
             }
             if (!IsInstrumentValid(instrument))
             {
-                EventPanel.AddMessageEvent("Ошибка, этим инструментом сюда нельзя", EventType.Warning);
+                EventPanel.AddMessageEvent("Ошибка, этим инструментом сюда нельзя", EventType.Bad);
                 return;
             }
             Diagnostic.CanRepair = true;

@@ -71,7 +71,7 @@ namespace Motherboard_Diagnostic
             }
             else if (!isRepair)
             {
-                EventPanel.AddMessageEvent("Неправильно", EventType.Warning);
+                EventPanel.AddMessageEvent("Неправильно", EventType.Bad);
             }
             this.Hide();
         }

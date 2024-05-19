@@ -54,29 +54,25 @@ namespace Motherboard_Diagnostic
 
         private void LaunchPCButton(object sender, RoutedEventArgs e)
         {
+            bool onlyImageFaults = Diagnostic.Faults.Where(x => x.Id == 8 || x.Id == 5).Count() == Diagnostic.Faults.Count();
+
             Button bt = (Button)e.Source;
             switch (bt.Content)
             {
                 case "Запустить ПК":
 
-                    if (Diagnostic.Faults.Count != 0)
+                    if (Diagnostic.Faults.Count() == 0)
                     {
-                        EventPanel.AddMessageEvent("ПК не запускается, устраните неисправности", EventType.Warning);
-                        if (
-                            Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 5)) ||
-                            Diagnostic.HasFault(DiagnosticHandbook.Faults.Find((x) => x.Id == 8))
-                            )
-                        {
-                            EventPanel.AddMessageEvent("Изображения нет", EventType.Warning);
-                        }
-                        else
-                        {
-                            EventPanel.AddMessageEvent("Изображение есть", EventType.VeryGood);
-                        }
+                        EventPanel.AddMessageEvent("ПК запущен (вентиляторы крутятся)\nИзображение есть", EventType.VeryGood);
+                    }
+                    else if (onlyImageFaults)
+                    {
+                        EventPanel.AddMessageEvent("Пк запущен (вентиляторы крутятся)", EventType.VeryGood);
+                        EventPanel.AddMessageEvent("Изображения нет\nУстраните неисправность", EventType.Bad);
                     }
                     else
                     {
-                        EventPanel.AddMessageEvent("ПК запущен, Изображение есть", EventType.VeryGood);
+                        EventPanel.AddMessageEvent("Пк не запустился (вентиляторы не крутятся)\nУстраните неисправность", EventType.Bad);
                     }
                     bt.Background = Brushes.IndianRed;
                     bt.Content = "Выключить";
@@ -142,7 +138,7 @@ namespace Motherboard_Diagnostic
             }
             else if (Diagnostic.PCIsLaunch)
             {
-                EventPanel.AddMessageEvent("Ремонт включенного компьютера невозможен", EventType.Warning);
+                EventPanel.AddMessageEvent("Ремонт включенного компьютера невозможен", EventType.Bad);
             }
             else{
                 EventPanel.AddMessageEvent("Продиагностируйте неисправность");
